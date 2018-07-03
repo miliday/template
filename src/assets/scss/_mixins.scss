@@ -1,0 +1,95 @@
+/*
+    --------------------------------------------------------------------------
+    Startup template creator - "Made with love, especially for you"
+    --------------------------------------------------------------------------
+    nickname: Michael Holiday
+    organization: "Totonis.com"
+    date: 18.06.2018
+    email: mr.michael.holiday$gmail.com
+    --------------------------------------------------------------------------
+    parting words: "The power of imagination is more important than knowledge"
+    --------------------------------------------------------------------------
+*/
+
+/*
+    --------------------------------------------------------------------------
+    Example of a new mixin
+    --------------------------------------------------------------------------
+    @mixin name($value){
+        property: $value;
+    }
+    --------------------------------------------------------------------------
+*/
+
+// Position
+@mixin paddingBlock(){
+    padding-top: $paddingBlock;
+    padding-bottom: $paddingBlock;
+    @include sm-block() {
+        padding-top: $paddingBlock / 2;
+        padding-bottom: $paddingBlock / 2;
+    }
+}
+
+@mixin paragraphMargin(){
+    margin-top: $paragraphMargin;
+    margin-bottom: $paragraphMargin;
+    &:first-child {
+        margin-top: 0;
+    }
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@mixin colVerticalOffset() {
+    margin-top: $colVerticalOffset;
+    margin-bottom: $colVerticalOffset;
+    &:first-child {
+        margin-top: 0;
+    }
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@mixin rowVerticalOffset() {
+    margin-top: $rowVerticalOffset;
+    margin-bottom: $rowVerticalOffset;
+    &:first-child {
+        margin-top: 0;
+    }
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@mixin absoluteCenter() {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+// Media
+
+@mixin mediaMax($break) {
+    @media screen and (max-width: #{$break}) {
+        @content;
+    }
+}
+
+@mixin mediaMin($break) {
+    @media screen and (min-width: #{$break}) {
+        @content;
+    }
+}
+
+// Additional
+
+@mixin hoverOpacity {
+    opacity: 1;
+    &:hover {
+        opacity: .8;
+    }
+}

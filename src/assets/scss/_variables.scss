@@ -1,0 +1,48 @@
+/*
+    ---------------------------------------------------------------
+    Startup template creator - "Made with love, especially for you"
+    ---------------------------------------------------------------
+    nickname: Michael Holiday
+    organization: "Totonis.com"
+    date: 18.06.2018
+    email: mr.michael.holiday$gmail.com
+    ---------------------------------------------------------------
+    parting words: "As long as man exists, he will reveal himself"
+    ---------------------------------------------------------------
+*/
+
+/*
+    ---------------------------------------------------------------
+    Example of a new variable
+    ---------------------------------------------------------------
+    $nameVariable: Value;
+    ---------------------------------------------------------------
+*/
+
+// Rem-converter
+
+$parentRem: 20px;
+$parentRemLg: 18px;
+$parentRemMd: 16px;
+$parentRemSm: 16px;
+$parentRemXs: 18px;
+
+// Colors
+
+$accentColor: #00838f;
+$darkColor: #263238;
+$lightColor: #eceff1;
+$neutralColor: #607d8b;
+
+// Fonts
+
+$firstFont: 'Roboto', sans-serif;
+$secondFont: 'Open Sans', sans-serif;
+
+// Margins
+
+$paddingBlock: rem(120px);
+$marginElement: rem(60px);
+$paragraphMargin: rem(15px);
+$colVerticalOffset: rem(30px);
+$rowVerticalOffset: rem(15px);

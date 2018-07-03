@@ -1,0 +1,1228 @@
+/*
+    ---------------------------------------------------------------
+    Startup template creator - "Made with love, especially for you"
+    ---------------------------------------------------------------
+    nickname: Michael Holiday
+    organization: "Totonis.com"
+    date: 18.06.2018
+    email: mr.michael.holiday@gmail.com
+    ---------------------------------------------------------------
+    parting words: "Not everything is gold that glitters"
+    ---------------------------------------------------------------
+*/
+/*
+    ---------------------------------------------------------------
+    Template for writing styles for the block
+    ---------------------------------------------------------------
+    .b-example-block {
+        width: 100%;
+        height: calc(~"10% + 100px");
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;            
+    }
+ 
+    .b-example-block__container {
+        @include wrapper();
+        @media screen and (max-width: 768px) {
+            ...
+        }
+    }
+    
+    .b-example-block__row {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: 30px;
+    }
+    ---------------------------------------------------------------
+*/
+/*
+    ------------------------------------------------------------
+    Startup template creator - "Made with love, especially for you"
+    ------------------------------------------------------------
+    nickname: Michael Holiday
+    organization: "Totonis.com"
+    date: 18.06.2018
+    email: mr.michael.holiday$gmail.com
+    ------------------------------------------------------------
+    parting words: "The key to any science is the question mark"
+    ------------------------------------------------------------
+*/
+/*
+    ------------------------------------------------------------
+    Example of a new function
+    ------------------------------------------------------------
+    @function name($variable) {
+        @return $variable * 2;
+    }
+    ------------------------------------------------------------
+*/
+/*
+    --------------------------------------------------------------------------
+    Startup template creator - "Made with love, especially for you"
+    --------------------------------------------------------------------------
+    nickname: Michael Holiday
+    organization: "Totonis.com"
+    date: 18.06.2018
+    email: mr.michael.holiday$gmail.com
+    --------------------------------------------------------------------------
+    parting words: "The power of imagination is more important than knowledge"
+    --------------------------------------------------------------------------
+*/
+/*
+    --------------------------------------------------------------------------
+    Example of a new mixin
+    --------------------------------------------------------------------------
+    @mixin name($value){
+        property: $value;
+    }
+    --------------------------------------------------------------------------
+*/
+/*
+    ---------------------------------------------------------------
+    Startup template creator - "Made with love, especially for you"
+    ---------------------------------------------------------------
+    nickname: Michael Holiday
+    organization: "Totonis.com"
+    date: 18.06.2018
+    email: mr.michael.holiday$gmail.com
+    ---------------------------------------------------------------
+    parting words: "As long as man exists, he will reveal himself"
+    ---------------------------------------------------------------
+*/
+/*
+    ---------------------------------------------------------------
+    Example of a new variable
+    ---------------------------------------------------------------
+    $nameVariable: Value;
+    ---------------------------------------------------------------
+*/
+/*
+    ---------------------------------------------------------------
+    Startup template creator - "Made with love, especially for you"
+    ---------------------------------------------------------------
+    nickname: Michael Holiday
+    organization: "Totonis.com"
+    date: 18.06.2018
+    email: mr.michael.holiday@gmail.com
+    ---------------------------------------------------------------
+    parting words: "Not everything is gold that glitters"
+    ---------------------------------------------------------------
+*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+html {
+  font-size: 20px; }
+  @media screen and (max-width: 1170px) {
+    html {
+      font-size: 18px; } }
+  @media screen and (max-width: 960px) {
+    html {
+      font-size: 16px; } }
+  @media screen and (max-width: 780px) {
+    html {
+      font-size: 16px; } }
+  @media screen and (max-width: 560px) {
+    html {
+      font-size: 18px; } }
+
+body {
+  position: relative; }
+
+img {
+  display: inline-block;
+  max-width: 100%; }
+
+a {
+  display: inline-block;
+  text-decoration: none; }
+
+ul,
+menu,
+dir {
+  display: block;
+  list-style-type: disc;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
+  -webkit-padding-start: 0; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0; }
+
+h1 {
+  display: block;
+  font-family: "Roboto", sans-serif;
+  color: #263238;
+  text-align: left;
+  font-size: 3rem;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 1.6;
+  text-decoration: none;
+  text-transform: none; }
+
+h2 {
+  display: block;
+  font-family: "Roboto", sans-serif;
+  color: #263238;
+  text-align: left;
+  font-size: 2.6rem;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 1.6;
+  text-decoration: none;
+  text-transform: none; }
+
+h3 {
+  display: block;
+  font-family: "Roboto", sans-serif;
+  color: #263238;
+  text-align: left;
+  font-size: 2.2rem;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 1.6;
+  text-decoration: none;
+  text-transform: none; }
+
+h4 {
+  display: block;
+  font-family: "Roboto", sans-serif;
+  color: #263238;
+  text-align: left;
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 1.6;
+  text-decoration: none;
+  text-transform: none; }
+
+h5 {
+  display: block;
+  font-family: "Roboto", sans-serif;
+  color: #263238;
+  text-align: left;
+  font-size: 1.4rem;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 1.6;
+  text-decoration: none;
+  text-transform: none; }
+
+h6 {
+  display: block;
+  font-family: "Roboto", sans-serif;
+  color: #263238;
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 1.6;
+  text-decoration: none;
+  text-transform: none; }
+
+p {
+  display: block;
+  font-family: 'Open Sans', sans-serif;
+  color: #263238;
+  text-align: left;
+  font-size: 0.9rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.4;
+  text-decoration: none;
+  text-transform: none; }
+
+blockquote {
+  display: block;
+  font-family: 'Open Sans', sans-serif;
+  color: #263238;
+  text-align: left;
+  font-size: 0.9rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.4;
+  text-decoration: none;
+  text-transform: none;
+  background-color: rgba(0, 0, 0, 0.2); }
+
+/*
+    ---------------------------------------------------------------------------
+    Startup template creator - "Made with love, especially for you"
+    ---------------------------------------------------------------------------
+    nickname: Michael Holiday
+    organization: "Totonis.com"
+    date: 18.06.2018
+    email: mr.michael.holiday@gmail.com
+    ---------------------------------------------------------------------------
+    parting words: "The power of imagination is more important than knowledge."
+    ---------------------------------------------------------------------------
+*/
+/*
+    ---------------------------------------------------------------------------
+    Template for connecting fonts
+    ---------------------------------------------------------------------------
+    100 - Thin
+    200 - Extra Light (Ultra Light)
+    300 - Light
+    400 - Regular (Normal)
+    500 - Medium
+    600 - Semi Bold (Demi Bold)
+    700 - Bold
+    800 - Extra Bold (Ultra Bold)
+    900 - Black (Heavy)
+    ---------------------------------------------------------------------------
+    @font-face {
+        font-family: 'Name';
+        font-style: normal;
+        font-weight: 400;
+        src: url(./assets/font/name-font/file-name.extension);
+    }
+    ---------------------------------------------------------------------------
+*/
+@font-face {
+  font-family: 'Roboto';
+  src: url("../font/Roboto/Roboto-Thin.eot");
+  src: url("../font/Roboto/Roboto-Thin.eot?#iefix") format("embedded-opentype"), url("../font/Roboto/Roboto-Thin.woff2") format("woff2"), url("../font/Roboto/Roboto-Thin.woff") format("woff"), url("../font/Roboto/Roboto-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("../font/Roboto/Roboto-ThinItalic.eot");
+  src: url("../font/Roboto/Roboto-ThinItalic.eot?#iefix") format("embedded-opentype"), url("../font/Roboto/Roboto-ThinItalic.woff2") format("woff2"), url("../font/Roboto/Roboto-ThinItalic.woff") format("woff"), url("../font/Roboto/Roboto-ThinItalic.ttf") format("truetype");
+  font-weight: 100;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("../font/Roboto/Roboto-Light.eot");
+  src: url("../font/Roboto/Roboto-Light.eot?#iefix") format("embedded-opentype"), url("../font/Roboto/Roboto-Light.woff2") format("woff2"), url("../font/Roboto/Roboto-Light.woff") format("woff"), url("../font/Roboto/Roboto-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("../font/Roboto/Roboto-LightItalic.eot");
+  src: url("../font/Roboto/Roboto-LightItalic.eot?#iefix") format("embedded-opentype"), url("../font/Roboto/Roboto-LightItalic.woff2") format("woff2"), url("../font/Roboto/Roboto-LightItalic.woff") format("woff"), url("../font/Roboto/Roboto-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("../font/Roboto/Roboto-Regular.eot");
+  src: url("../font/Roboto/Roboto-Regular.eot?#iefix") format("embedded-opentype"), url("../font/Roboto/Roboto-Regular.woff2") format("woff2"), url("../font/Roboto/Roboto-Regular.woff") format("woff"), url("../font/Roboto/Roboto-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("../font/Roboto/Roboto-Italic.eot");
+  src: url("../font/Roboto/Roboto-Italic.eot?#iefix") format("embedded-opentype"), url("../font/Roboto/Roboto-Italic.woff2") format("woff2"), url("../font/Roboto/Roboto-Italic.woff") format("woff"), url("../font/Roboto/Roboto-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("../font/Roboto/Roboto-Medium.eot");
+  src: url("../font/Roboto/Roboto-Medium.eot?#iefix") format("embedded-opentype"), url("../font/Roboto/Roboto-Medium.woff2") format("woff2"), url("../font/Roboto/Roboto-Medium.woff") format("woff"), url("../font/Roboto/Roboto-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("../font/Roboto/Roboto-MediumItalic.eot");
+  src: url("../font/Roboto/Roboto-MediumItalic.eot?#iefix") format("embedded-opentype"), url("../font/Roboto/Roboto-MediumItalic.woff2") format("woff2"), url("../font/Roboto/Roboto-MediumItalic.woff") format("woff"), url("../font/Roboto/Roboto-MediumItalic.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("../font/Roboto/Roboto-Bold.eot");
+  src: url("../font/Roboto/Roboto-Bold.eot?#iefix") format("embedded-opentype"), url("../font/Roboto/Roboto-Bold.woff2") format("woff2"), url("../font/Roboto/Roboto-Bold.woff") format("woff"), url("../font/Roboto/Roboto-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("../font/Roboto/Roboto-BoldItalic.eot");
+  src: url("../font/Roboto/Roboto-BoldItalic.eot?#iefix") format("embedded-opentype"), url("../font/Roboto/Roboto-BoldItalic.woff2") format("woff2"), url("../font/Roboto/Roboto-BoldItalic.woff") format("woff"), url("../font/Roboto/Roboto-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("../font/Roboto/Roboto-Black.eot");
+  src: url("../font/Roboto/Roboto-Black.eot?#iefix") format("embedded-opentype"), url("../font/Roboto/Roboto-Black.woff2") format("woff2"), url("../font/Roboto/Roboto-Black.woff") format("woff"), url("../font/Roboto/Roboto-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("../font/Roboto/Roboto-BlackItalic.eot");
+  src: url("../font/Roboto/Roboto-BlackItalic.eot?#iefix") format("embedded-opentype"), url("../font/Roboto/Roboto-BlackItalic.woff2") format("woff2"), url("../font/Roboto/Roboto-BlackItalic.woff") format("woff"), url("../font/Roboto/Roboto-BlackItalic.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url("../font/Open_Sans/OpenSans-Light.eot");
+  src: url("../font/Open_Sans/OpenSans-Light.eot?#iefix") format("embedded-opentype"), url("../font/Open_Sans/OpenSans-Light.woff2") format("woff2"), url("../font/Open_Sans/OpenSans-Light.woff") format("woff"), url("../font/Open_Sans/OpenSans-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url("../font/Open_Sans/OpenSans-LightItalic.eot");
+  src: url("../font/Open_Sans/OpenSans-LightItalic.eot?#iefix") format("embedded-opentype"), url("../font/Open_Sans/OpenSans-LightItalic.woff2") format("woff2"), url("../font/Open_Sans/OpenSans-LightItalic.woff") format("woff"), url("../font/Open_Sans/OpenSans-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url("../font/Open_Sans/OpenSans-Regular.eot");
+  src: url("../font/Open_Sans/OpenSans-Regular.eot?#iefix") format("embedded-opentype"), url("../font/Open_Sans/OpenSans-Regular.woff2") format("woff2"), url("../font/Open_Sans/OpenSans-Regular.woff") format("woff"), url("../font/Open_Sans/OpenSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url("../font/Open_Sans/OpenSans-Italic.eot");
+  src: url("../font/Open_Sans/OpenSans-Italic.eot?#iefix") format("embedded-opentype"), url("../font/Open_Sans/OpenSans-Italic.woff2") format("woff2"), url("../font/Open_Sans/OpenSans-Italic.woff") format("woff"), url("../font/Open_Sans/OpenSans-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url("../font/Open_Sans/OpenSans-SemiBold.eot");
+  src: url("../font/Open_Sans/OpenSans-SemiBold.eot?#iefix") format("embedded-opentype"), url("../font/Open_Sans/OpenSans-SemiBold.woff2") format("woff2"), url("../font/Open_Sans/OpenSans-SemiBold.woff") format("woff"), url("../font/Open_Sans/OpenSans-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url("../font/Open_Sans/OpenSans-SemiBoldItalic.eot");
+  src: url("../font/Open_Sans/OpenSans-SemiBoldItalic.eot?#iefix") format("embedded-opentype"), url("../font/Open_Sans/OpenSans-SemiBoldItalic.woff2") format("woff2"), url("../font/Open_Sans/OpenSans-SemiBoldItalic.woff") format("woff"), url("../font/Open_Sans/OpenSans-SemiBoldItalic.ttf") format("truetype");
+  font-weight: 600;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url("../font/Open_Sans/OpenSans-Bold.eot");
+  src: url("../font/Open_Sans/OpenSans-Bold.eot?#iefix") format("embedded-opentype"), url("../font/Open_Sans/OpenSans-Bold.woff2") format("woff2"), url("../font/Open_Sans/OpenSans-Bold.woff") format("woff"), url("../font/Open_Sans/OpenSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url("../font/Open_Sans/OpenSans-BoldItalic.eot");
+  src: url("../font/Open_Sans/OpenSans-BoldItalic.eot?#iefix") format("embedded-opentype"), url("../font/Open_Sans/OpenSans-BoldItalic.woff2") format("woff2"), url("../font/Open_Sans/OpenSans-BoldItalic.woff") format("woff"), url("../font/Open_Sans/OpenSans-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url("../font/Open_Sans/OpenSans-ExtraBold.eot");
+  src: url("../font/Open_Sans/OpenSans-ExtraBold.eot?#iefix") format("embedded-opentype"), url("../font/Open_Sans/OpenSans-ExtraBold.woff2") format("woff2"), url("../font/Open_Sans/OpenSans-ExtraBold.woff") format("woff"), url("../font/Open_Sans/OpenSans-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url("../font/Open_Sans/OpenSans-ExtraBoldItalic.eot");
+  src: url("../font/Open_Sans/OpenSans-ExtraBoldItalic.eot?#iefix") format("embedded-opentype"), url("../font/Open_Sans/OpenSans-ExtraBoldItalic.woff2") format("woff2"), url("../font/Open_Sans/OpenSans-ExtraBoldItalic.woff") format("woff"), url("../font/Open_Sans/OpenSans-ExtraBoldItalic.ttf") format("truetype");
+  font-weight: 800;
+  font-style: italic; }
+
+.b-modal-test__row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -15px;
+  margin-right: -15px; }
+
+.b-modal-test__col {
+  box-sizing: border-box;
+  word-wrap: break-word;
+  margin-left: 15px;
+  margin-right: 15px;
+  width: calc(50% - 30px); }
+  @media screen and (max-width: 780px) {
+    .b-modal-test__col {
+      width: calc(100% - 30px); } }
+  @media screen and (max-width: 780px) {
+    .b-modal-test__col {
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem; }
+      .b-modal-test__col:first-child {
+        margin-top: 0; }
+      .b-modal-test__col:last-child {
+        margin-bottom: 0; } }
+
+.b-example-section {
+  width: 100%; }
+
+.b-example-section__container {
+  max-width: 1170px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px; }
+
+.b-example-section__header {
+  margin-bottom: 3rem; }
+
+.b-example-section__subtitle {
+  margin-bottom: 0.75rem; }
+
+.b-example-section__row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -15px;
+  margin-right: -15px;
+  align-items: center; }
+
+.b-example-section__col {
+  box-sizing: border-box;
+  word-wrap: break-word;
+  margin-left: 15px;
+  margin-right: 15px;
+  width: calc(50% - 30px); }
+  @media screen and (max-width: 780px) {
+    .b-example-section__col {
+      width: calc(100% - 30px); } }
+  @media screen and (max-width: 780px) {
+    .b-example-section__col {
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem; }
+      .b-example-section__col:first-child {
+        margin-top: 0; }
+      .b-example-section__col:last-child {
+        margin-bottom: 0; } }
+
+.b-example-section__text {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem; }
+  .b-example-section__text:first-child {
+    margin-top: 0; }
+  .b-example-section__text:last-child {
+    margin-bottom: 0; }
+
+.b-example-section__content-img {
+  display: block;
+  margin: 0 auto;
+  cursor: pointer; }
+
+.b-modal-window {
+  width: 200%;
+  height: 200%;
+  min-height: 420px;
+  overflow: hidden;
+  background-color: #3b4e58;
+  z-index: 2;
+  transition: all .6s ease-in-out;
+  transform-origin: bottom;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  transform: translate(-50%, 150%) scaleY(0); }
+
+.b-modal-window_collapse {
+  transform: translate(-50%, -50%) scaleY(1); }
+
+.b-modal-window__close {
+  width: 30px;
+  height: 22px;
+  position: absolute;
+  top: calc(25% + 15px);
+  right: calc(25% + 15px);
+  cursor: pointer; }
+  .b-modal-window__close:before, .b-modal-window__close:after {
+    content: '';
+    width: 100%;
+    height: 4px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all .2s linear;
+    border-radius: 2px;
+    background-color: #eceff1; }
+  .b-modal-window__close:before {
+    transform: translate(-50%, -50%) rotate(45deg); }
+  .b-modal-window__close:after {
+    transform: translate(-50%, -50%) rotate(-45deg); }
+  .b-modal-window__close:hover:before {
+    width: 120%; }
+  .b-modal-window__close:hover:after {
+    width: 120%; }
+
+.b-modal-window__container {
+  width: 100%;
+  max-width: 1170px;
+  max-height: calc(50% - 110px);
+  padding: 0 1.5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all .2s linear;
+  overflow-y: auto;
+  overflow-x: hidden; }
+  @media screen and (max-width: 1170px) {
+    .b-modal-window__container {
+      max-width: 960px; } }
+  @media screen and (max-width: 960px) {
+    .b-modal-window__container {
+      max-width: 780px; } }
+  @media screen and (max-width: 780px) {
+    .b-modal-window__container {
+      max-width: 560px; } }
+  @media screen and (max-width: 780px) {
+    .b-modal-window__container {
+      padding: 0 0.75rem; } }
+  @media screen and (max-width: 560px) {
+    .b-modal-window__container {
+      max-width: 420px; } }
+  @media screen and (max-width: 420px) {
+    .b-modal-window__container {
+      max-width: 320px; } }
+
+.b-modal-window__title {
+  margin-bottom: 1.5rem;
+  text-align: left;
+  font-family: "Roboto", sans-serif;
+  color: #eceff1;
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1.2; }
+
+.b-modal-window__title_center {
+  text-align: center; }
+
+.b-modal-window__title_right {
+  text-align: right; }
+
+.b-modal-window__content {
+  font-family: "Open Sans", sans-serif;
+  color: #eceff1;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.4; }
+
+.b-title {
+  font-family: "Roboto", sans-serif;
+  color: #607d8b;
+  text-align: left;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.4; }
+
+.b-title_center {
+  text-align: center; }
+
+.b-title_right {
+  text-align: right; }
+
+.b-title_dark {
+  color: #263238; }
+
+.b-title_light {
+  color: #eceff1; }
+
+.b-title_accent {
+  color: #00838f; }
+
+.b-title__span {
+  display: inline-block;
+  font-size: 3rem; }
+
+.b-title__span_word-glue {
+  font-size: 0;
+  white-space: nowrap; }
+
+.b-title__span_dark {
+  color: #263238; }
+
+.b-title__span_light {
+  color: #eceff1; }
+
+.b-title__span_accent {
+  color: #00838f; }
+
+.b-subtitle {
+  font-family: "Roboto", sans-serif;
+  color: #607d8b;
+  text-align: left;
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.4; }
+
+.b-subtitle_center {
+  text-align: center; }
+
+.b-subtitle_right {
+  text-align: right; }
+
+.b-subtitle_dark {
+  color: #263238; }
+
+.b-subtitle_light {
+  color: #eceff1; }
+
+.b-subtitle_accent {
+  color: #00838f; }
+
+.b-subtitle__span {
+  display: inline-block;
+  font-size: 1.75rem; }
+
+.b-subtitle__span_word-glue {
+  font-size: 0;
+  white-space: nowrap; }
+
+.b-subtitle__span_dark {
+  color: #263238; }
+
+.b-subtitle__span_light {
+  color: #eceff1; }
+
+.b-subtitle__span_accent {
+  color: #00838f; }
+
+.b-description {
+  font-family: "Open Sans", sans-serif;
+  color: #607d8b;
+  text-align: left;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.4; }
+
+.b-description_center {
+  text-align: center; }
+
+.b-description_right {
+  text-align: right; }
+
+.b-description_dark {
+  color: #263238; }
+
+.b-description_light {
+  color: #eceff1; }
+
+.b-description_accent {
+  color: #00838f; }
+
+.b-description__span {
+  font-size: 1.2rem;
+  display: inline-block; }
+
+.b-description__span_word-glue {
+  font-size: 0;
+  white-space: nowrap; }
+
+.b-description__span_dark {
+  color: #263238; }
+
+.b-description__span_light {
+  color: #eceff1; }
+
+.b-description__span_accent {
+  color: #00838f; }
+
+.b-text {
+  font-family: "Open Sans", sans-serif;
+  color: #607d8b;
+  text-align: left;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.4; }
+
+.b-text_center {
+  text-align: center; }
+
+.b-text_right {
+  text-align: right; }
+
+.b-text_dark {
+  color: #263238; }
+
+.b-text_light {
+  color: #eceff1; }
+
+.b-text_accent {
+  color: #00838f; }
+
+.b-text__span {
+  display: inline-block;
+  font-size: 0.9rem; }
+
+.b-text__span_word-glue {
+  font-size: 0;
+  white-space: nowrap; }
+
+.b-text__span_dark {
+  color: #263238; }
+
+.b-text__span_light {
+  color: #eceff1; }
+
+.b-text__span_accent {
+  color: #00838f; }
+
+.b-header {
+  width: 100%;
+  transition: all .2s linear;
+  min-height: 6rem; }
+  @media screen and (max-width: 780px) {
+    .b-header {
+      min-height: 3rem; } }
+
+.b-header__desctop {
+  height: 6rem; }
+  @media screen and (max-width: 780px) {
+    .b-header__desctop {
+      height: 0; } }
+
+.b-header__desctop_sticky {
+  position: fixed;
+  top: 0;
+  left: 0; }
+
+.b-header__mobile {
+  height: 0; }
+  @media screen and (max-width: 780px) {
+    .b-header__mobile {
+      height: 3rem; } }
+
+.b-header__mobile_sticky {
+  position: fixed;
+  top: 0;
+  left: 0; }
+
+.b-header-desctop {
+  width: 100%;
+  overflow: hidden;
+  transition: all .2s linear;
+  background-color: #263238; }
+
+.b-header-desctop__container {
+  height: inherit;
+  max-width: 1170px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px; }
+
+.b-header-desctop__row {
+  height: inherit;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -15px;
+  margin-right: -15px;
+  justify-content: space-between;
+  align-items: center; }
+
+.b-header-desctop__col {
+  box-sizing: border-box;
+  word-wrap: break-word;
+  margin-left: 15px;
+  margin-right: 15px; }
+
+.b-header-mobile {
+  width: 100%;
+  overflow: hidden;
+  transition: all .2s linear;
+  background-color: #34444d; }
+
+.b-header-mobile__container {
+  height: inherit;
+  max-width: 1170px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px; }
+
+.b-header-mobile__row {
+  height: inherit;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -15px;
+  margin-right: -15px;
+  justify-content: space-between;
+  align-items: center; }
+
+.b-header-mobile__col {
+  box-sizing: border-box;
+  word-wrap: break-word;
+  margin-left: 15px;
+  margin-right: 15px; }
+
+.b-header-mobile__toggle {
+  z-index: 1; }
+
+.b-header-mobile__menu {
+  width: 200%;
+  height: 200%;
+  border-radius: 50%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  overflow: hidden;
+  transition: all .6s ease-in-out;
+  transform: translate(-50%, -150%) scaleY(0);
+  transform-origin: top;
+  background-color: #3b4e58; }
+
+@media screen and (max-width: 780px) {
+  .b-header-mobile__menu_collapse {
+    transform: translate(-50%, -50%) scaleY(1); } }
+
+.b-menu-toggle {
+  width: 30px;
+  height: 22px;
+  position: relative;
+  cursor: pointer; }
+
+.b-menu-toggle > .b-menu-toggle__line {
+  width: 100%;
+  height: 4px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  transform-origin: center;
+  background-color: #eceff1;
+  border-radius: 0.1rem;
+  opacity: 1;
+  transition: width 100ms linear, top 100ms linear 150ms, opacity 10ms linear 90ms, transform 100ms linear; }
+  .b-menu-toggle > .b-menu-toggle__line:nth-child(1) {
+    top: 0; }
+  .b-menu-toggle > .b-menu-toggle__line:nth-child(2) {
+    top: calc(50% - 2px); }
+  .b-menu-toggle > .b-menu-toggle__line:nth-child(3) {
+    top: calc(100% - 4px); }
+
+.b-menu-toggle:hover > .b-menu-toggle__line:nth-child(1) {
+  width: 110%; }
+
+.b-menu-toggle:hover > .b-menu-toggle__line:nth-child(2) {
+  width: 90%; }
+
+.b-menu-toggle:hover > .b-menu-toggle__line:nth-child(3) {
+  width: 110%; }
+
+.b-menu-toggle.b-menu-toggle_close > .b-menu-toggle__line {
+  transition: width 100ms linear, top 100ms linear, opacity 10ms linear 100ms, transform 100ms linear 150ms; }
+  .b-menu-toggle.b-menu-toggle_close > .b-menu-toggle__line:nth-child(1) {
+    top: calc(50% - 2px);
+    transform: translateX(-50%) rotate(45deg); }
+  .b-menu-toggle.b-menu-toggle_close > .b-menu-toggle__line:nth-child(2) {
+    opacity: 0; }
+  .b-menu-toggle.b-menu-toggle_close > .b-menu-toggle__line:nth-child(3) {
+    top: calc(50% - 2px);
+    transform: translateX(-50%) rotate(-45deg); }
+
+.b-menu-mobile__header {
+  width: calc(50% - 110px);
+  max-height: calc(50% - 110px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+
+.b-menu-mobile-header {
+  overflow-y: auto;
+  overflow-x: hidden; }
+
+.b-menu-mobile-header__list {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none; }
+
+.b-menu-mobile-header__list_center {
+  align-items: center; }
+
+.b-menu-mobile-header__list_right {
+  align-items: flex-end; }
+
+.b-menu-mobile-header__list > li {
+  display: inline-flex;
+  margin: 0.5rem 0; }
+  .b-menu-mobile-header__list > li:first-child {
+    margin-top: 0; }
+  .b-menu-mobile-header__list > li:last-child {
+    margin-bottom: 0; }
+
+.b-menu-mobile-header__list > li > a {
+  padding: 0.25rem;
+  font-family: "Open Sans", sans-serif;
+  color: #eceff1;
+  font-size: 1.6rem;
+  font-weight: 400;
+  text-decoration: none;
+  transition: opacity .2s linear;
+  opacity: 1; }
+  .b-menu-mobile-header__list > li > a:hover {
+    opacity: .8; }
+
+.b-menu-mobile-footer {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none; }
+
+.b-menu-mobile-footer_center {
+  align-items: center; }
+
+.b-menu-mobile-footer_right {
+  align-items: flex-end; }
+
+.b-menu-mobile-footer > li {
+  display: inline-flex;
+  margin: 0.5rem 0; }
+  .b-menu-mobile-footer > li:first-child {
+    margin-top: 0; }
+  .b-menu-mobile-footer > li:last-child {
+    margin-bottom: 0; }
+
+.b-menu-mobile-footer > li > a {
+  padding: 0.25rem;
+  font-family: "Open Sans", sans-serif;
+  color: #eceff1;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity .2s linear;
+  opacity: 1; }
+  .b-menu-mobile-footer > li > a:hover {
+    opacity: .8; }
+
+.b-menu-desctop {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row; }
+
+.b-menu-desctop > li {
+  margin: 0 0.5rem; }
+  .b-menu-desctop > li:first-child {
+    margin-left: 0; }
+  .b-menu-desctop > li:last-child {
+    margin-right: 0; }
+
+.b-menu-desctop > li > a {
+  padding: 0.25rem;
+  font-family: "Open Sans", sans-serif;
+  color: #eceff1;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity .2s linear;
+  opacity: 1; }
+  .b-menu-desctop > li > a:hover {
+    opacity: .8; }
+
+.b-logo {
+  transition: opacity .2s linear;
+  opacity: 1; }
+  .b-logo:hover {
+    opacity: .8; }
+
+.b-logo__text {
+  font-family: "Open Sans", sans-serif;
+  color: #607d8b;
+  font-size: 1.3rem;
+  font-weight: 900;
+  line-height: 1;
+  text-transform: none; }
+
+.b-logo__text_big {
+  font-size: 1.8rem; }
+
+.b-logo__text_dark {
+  color: #263238; }
+
+.b-logo__text_light {
+  color: #eceff1; }
+
+.b-logo__text_accent {
+  color: #00838f; }
+
+.b-content {
+  display: flex;
+  flex-direction: column;
+  transition: all .2s linear;
+  background-color: #fff; }
+
+.b-content__section-example {
+  padding-top: 6rem;
+  padding-bottom: 6rem; }
+  @media screen and (max-width: 780px) {
+    .b-content__section-example {
+      padding-top: 3rem;
+      padding-bottom: 3rem; } }
+
+.b-footer {
+  min-height: 6.5rem;
+  box-sizing: content-box;
+  overflow: hidden;
+  transition: all .2s linear; }
+  @media screen and (max-width: 780px) {
+    .b-footer {
+      min-height: 26.5rem; } }
+
+.b-footer__desctop {
+  height: 6.5rem; }
+  @media screen and (max-width: 780px) {
+    .b-footer__desctop {
+      height: 0; } }
+
+.b-footer__desctop_sticky {
+  position: fixed;
+  bottom: 0;
+  left: 0; }
+
+.b-footer__mobile {
+  height: 0; }
+  @media screen and (max-width: 780px) {
+    .b-footer__mobile {
+      height: 26.5rem; } }
+
+.b-footer__mobile_sticky {
+  position: fixed;
+  bottom: 0;
+  left: 0; }
+
+.b-footer-desctop {
+  width: 100%;
+  overflow: hidden;
+  transition: all .4s linear;
+  background-color: #263238; }
+
+.b-footer-desctop__container {
+  height: inherit;
+  max-width: 1170px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+
+.b-footer-desctop__row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  justify-content: space-between;
+  align-items: center; }
+  .b-footer-desctop__row:first-child {
+    margin-top: 0; }
+  .b-footer-desctop__row:last-child {
+    margin-bottom: 0; }
+
+.b-footer-desctop__col {
+  box-sizing: border-box;
+  word-wrap: break-word;
+  margin-left: 15px;
+  margin-right: 15px; }
+
+.b-footer-desctop__copyright {
+  width: 100%;
+  margin-top: 0.75rem;
+  font-family: "Roboto", sans-serif;
+  color: #607d8b;
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 400; }
+
+.b-footer-mobile {
+  width: 100%;
+  overflow: hidden;
+  transition: all .4s linear;
+  background-color: #263238; }
+
+.b-footer-mobile__container {
+  height: inherit;
+  max-width: 1170px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+
+.b-footer-mobile__row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -15px;
+  margin-right: -15px; }
+
+.b-footer-mobile__col {
+  box-sizing: border-box;
+  word-wrap: break-word;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  justify-content: center; }
+  @media screen and (max-width: 780px) {
+    .b-footer-mobile__col {
+      width: calc(100% - 30px); } }
+  .b-footer-mobile__col:first-child {
+    margin-top: 0; }
+  .b-footer-mobile__col:last-child {
+    margin-bottom: 0; }
+
+.b-footer-mobile__logo {
+  text-align: center; }
+
+.b-footer-mobile__copyright {
+  font-family: "Roboto", sans-serif;
+  color: #607d8b;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 400; }
+
+.b-page {
+  width: 100%;
+  min-width: 360px;
+  position: relative;
+  z-index: 1; }
+
+.b-page__header {
+  position: relative;
+  z-index: 3; }
+
+.b-page__header_absolute {
+  position: absolute;
+  top: 0;
+  left: 0; }
+
+.b-page__content {
+  position: relative;
+  z-index: 2; }
+
+.b-page__footer {
+  position: relative;
+  z-index: 1; }
+
+/*# sourceMappingURL=main.css.map */

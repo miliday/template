@@ -1,0 +1,20 @@
+{
+    "liveServer.settings.multiRootWorkspaceName": "markup get started",
+    "editor.tabSize": 4,
+    "scss.lint.emptyRules": "ignore",
+    "easycompile.sass": {
+        "out": "../css/",
+        "compress": false,
+        "sourceMap": false,
+        "autoprefixer": "",
+        "groupmedia": false
+    },
+    "beautify.config": {
+        "indent_size": 4,
+        "indent_char": " ",
+        "css": {
+            "indent_size": 4
+
+        }
+    },
+}
