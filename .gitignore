@@ -2,4 +2,5 @@
 /.vscode
 /.idea
 *.code-workspace
+/dist
 package-lock.json
