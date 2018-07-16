@@ -1,4 +1,4 @@
-class modalWindow {
+class ModalWindow {
     constructor(config) {
 
         // accept config options

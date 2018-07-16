@@ -1,4 +1,4 @@
-class mobileMenu {
+class MobileMenu {
     constructor(config) {
 
         // accept config options
