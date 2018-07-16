@@ -3,4 +3,5 @@
 /.idea
 *.code-workspace
 /dist
+/src/assets/css
 package-lock.json

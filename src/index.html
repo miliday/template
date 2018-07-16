@@ -50,7 +50,9 @@
                                         <a href="blank.html">Link</a>
                                     </li>
                                     <li>
-                                        <a href="blank.html">Link</a>
+                                        <a href="blank.html" data-scroll-to-trigger>
+                                            scroll
+                                        </a>
                                     </li>
                                     <li>
                                         <a href="blank.html">Link</a>
@@ -114,7 +116,7 @@
             </div>
         </header>
 
-        <main class="b-content b-page__content">
+        <main class="b-content b-page__content" data-scroll-to-anchor>
             <section class="b-example-section b-content__section-example">
                 <div class="b-example-section__container">
                     <header class="b-example-section__header">
@@ -280,10 +282,17 @@
     <script src="./assets/js/scene-scroll-control.js"></script>
     <script src="./assets/js/menu-mobile.js"></script>
     <script src="./assets/js/modal-window.js"></script>
+    <script src="./assets/js/scroll-to.js"></script>
     <!-- includes-own-scripts-end -->
 
     <!-- initialization-own-scripts -->
     <script>
+        new ScrollToBlock({
+            anchor: '[data-scroll-to-anchor]',
+            trigger: '[data-scroll-to-trigger]',
+            scrollContainer: 'b-header-mobile'
+        })
+
         new sceneScrollControl({
             scene: 'body',
             tracking: 'body'
