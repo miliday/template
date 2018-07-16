@@ -5,10 +5,7 @@
 
     **************************************************
 
-    nickname: {
-        Dmitriy_Corty,
-        Michael_Holiday
-    }
+    nickname: Dmitriy_Corty
     organization: "Totonis.com"
     date: 25.06.2018
     email: dmitriy.corty@gmail.com

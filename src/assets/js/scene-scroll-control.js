@@ -1,4 +1,4 @@
-class sceneScrollControl {
+class SceneScrollControl {
     constructor(config) {
 
         // accept config options

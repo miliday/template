@@ -287,18 +287,18 @@
 
     <!-- initialization-own-scripts -->
     <script>
-        new ScrollToBlock({
-            anchor: '[data-scroll-to-anchor]',
-            trigger: '[data-scroll-to-trigger]',
-            scrollContainer: 'b-header-mobile'
-        })
+        // new ScrollToBlock({
+        //     anchor: '[data-scroll-to-anchor]',
+        //     trigger: '[data-scroll-to-trigger]',
+        //     scrollContainer: 'b-header-mobile'
+        // })
 
-        new sceneScrollControl({
+        new SceneScrollControl({
             scene: 'body',
             tracking: 'body'
         })
 
-        new mobileMenu({
+        new MobileMenu({
             breakPoint: 780,
             menu: '[data-mobile-menu]',
             menuToggle: '[data-mobile-menu-toggle]',
@@ -306,7 +306,7 @@
             menuToggleClassClose: 'b-menu-toggle_close'
         })
 
-        new modalWindow({
+        new ModalWindow({
             title: 'Пример модального окна',
             triggerOpen: '[data-modal-trigger="modal-1"]',
             contentElem: '[data-modal-window="modal-1"]'
