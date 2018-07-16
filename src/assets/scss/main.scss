@@ -50,9 +50,7 @@
 @import "_fonts";
 
 // Modal-examole
-.b-modal-test {
-    display: inline-block;
-}
+.b-modal-test {}
 
 .b-modal-test__row {
     @include row-flex();
