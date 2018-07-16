@@ -1,3 +1,16 @@
+/*
+    ---------------------------------------------------------------
+    Startup template creator - "Made with love, especially for you"
+    ---------------------------------------------------------------
+    nickname: Michael Holiday
+    organization: "Totonis.com"
+    date: 18.06.2018
+    email: mr.michael.holiday@gmail.com
+    ---------------------------------------------------------------
+    parting words: "In their youth they learn, and they understand it in old age."
+    ---------------------------------------------------------------
+*/
+
 class MobileMenu {
     constructor(config) {
 
