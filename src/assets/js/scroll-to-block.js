@@ -1,82 +1,72 @@
-/*
-    **************************************************
+class ScrollToBlockPositionParent{
+	constructor(){
 
-    Modul for item tracking
+		// default value variables
+		this.scrollContainer = $('body, html')
+		this.position = 'top'
+	}
+}
 
-    **************************************************
 
-    nickname: Dmitriy_Corty
-    organization: "Totonis.com"
-    date: 25.06.2018
-    email: dmitriy.corty@gmail.com
+class ScrollToBlockPosition extends ScrollToBlockPositionParent{
+	constructor(config){
 
-    **************************************************
-*/
+		super()
 
-var ScrollToBlockPosition = function(config){
+		// accept config options
+		this.button = $(config.button)
+		this.anchor = $(config.anchor)
 
-	if (!config.anchor){
-        console.error('selector Anchor must be defined!');
-        return
-    };
+		if(config.position){
+			this.position = config.position
+		}
 
-    var $anchor = $(config.anchor);
-    if ($anchor.length === 0){
-        console.error('Element with selector' + config.anchor + ' is not defined!');
-        return
-    };
+		if(config.scrollContainer){
+			this.scrollContainer = $(config.scrollContainer)
+		}
 
-	if (!config.button){
-        console.error('button must be defined!');
-        return
-    };
+		// save class context
+		let object = this
 
-    var $button = $(config.button);
-    if ($button.length === 0) {
-        console.error('Element with selector' + config.button + ' is not defined!');
-        return
-    };
+		
+		this.handlerClick(object)
+		this.getCoords(object)
+		this.positionOnScroll(object)
+	}
 
-    var $position = $(config.position);
-    
-    if (config.scrollContainer) {
-        var $scrollContainer = $(config.scrollContainer);
-    } else {
-        var $scrollContainer = $('body, html');
-    }
-  
-    if ($scrollContainer.length === 0) {
-        console.error('Element "scrollContainer" is not defined!');
-        return
-    };  
-    
-    function getCoords(elem){
-        var box = elem.getBoundingClientRect();
+
+	// learn how to scroll a lot
+	getCoords(object){
+        let box = object.anchor[0].getBoundingClientRect();
         return{
-            center:     document.documentElement.scrollTop + box.top - (window.innerHeight / 2.1),
+            center:     document.documentElement.scrollTop + box.top - (window.innerHeight / 2 - 40),
             top:        document.documentElement.scrollTop + box.top,
-            bottom:     document.documentElement.scrollTop + box.top - (window.innerHeight * 0.9)
+            bottom:     document.documentElement.scrollTop + box.top - (window.innerHeight - 80)
         }
     }        
 
-    function positionOnScroll(){
-        if (!config.position){
-            $position = getCoords($anchor[0]).top
+    // comparison of transmitted offset values
+	positionOnScroll(object){
+        if (!object.position){
+            object.position = object.getCoords(object).top
         }
-        else if(config.position === 'center'){
-            $position = getCoords($anchor[0]).center
+        else if(object.position === 'center'){
+            object.position = object.getCoords(object).center
         }
-        else if(config.position === 'bottom'){
-            $position = getCoords($anchor[0]).bottom
+        else if(object.position === 'bottom'){
+            object.position = object.getCoords(object).bottom
         }
-        else if(config.position === 'top'){
-            $position = getCoords($anchor[0]).top
+        else if(object.position === 'top'){
+            object.position = object.getCoords(object).top
         }
-        return $position
+        return object.position
     }
 
-	$button.click(function(){
-        event.preventDefault();
-        $scrollContainer.animate({scrollTop: positionOnScroll()}, 500);
-  	});
+    // enable click handler
+	handlerClick(object){
+
+		object.button.on('click', function(){
+			object.scrollContainer.animate({scrollTop: object.positionOnScroll(object)}, 500)
+		})
+	}
 }
