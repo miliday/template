@@ -120,7 +120,7 @@
             <section class="b-example-section b-content__section-example">
                 <div class="b-example-section__container">
                     <header class="b-example-section__header">
-                        <h2 class="b-title b-title_accent b-title_center b-example-section__title">
+                        <h2 class="b-title b-title_accent b-title_center b-example-section__title" data-qwe-qwe>
                             Get Started Markup Template
                         </h2>
                         <h3 class="b-subtitle b-subtitle_dark b-subtitle_center b-example-section__subtitle">
@@ -141,7 +141,7 @@
                             </div>
 
                             <div class="b-example-section__col">
-                                <h3 class="b-subtitle b-subtitle_dark b-example-section__subtitle">
+                                <h3 class="b-subtitle b-subtitle_dark b-example-section__subtitle" data-scroll-to-block>
                                     Example section subtitle
                                 </h3>
                                 <p class="b-text b-text_dark b-example-section__text">
@@ -283,6 +283,7 @@
     <script src="./assets/js/menu-mobile.js"></script>
     <script src="./assets/js/modal-window.js"></script>
     <script src="./assets/js/tracking-postition.js"></script>
+    <script src="./assets/js/scroll-to-block.js"></script>
     <!-- includes-own-scripts-end -->
 
     <!-- initialization-own-scripts -->
@@ -312,12 +313,19 @@
             offset: $(window).height() * 0.2,
             eventName: 'testEvent',
             callBack: function() {
-                console.log('callBack')
+                // console.log('callBack')
             }
         })
 
+        new ScrollToBlockPosition({
+            button: '[data-scroll-to-block]',
+            anchor: '[data-qwe-qwe]',
+            position: 'top'
+
+        })
+
         $('body').on('testEvent', function() {
-            alert('event')
+            // alert('event')
         })
     </script>
     <!-- initialization-own-scripts-end -->
