@@ -52,7 +52,7 @@ var path = {
         js: 	'dist/assets/js/',
         img: 	'dist/assets/img/',
         fonts: 	'dist/assets/font/',
-        vendor: 'dist/assets/vendor/'
+        lib: 'dist/assets/lib/'
 	},
 	src:{
 		html: 	'src/*.html',
@@ -61,9 +61,9 @@ var path = {
 		js: 	'src/assets/js/*.js',
 		img: 	'src/assets/img/**/*.*',
 		fonts: 	'src/assets/font/**/*.*',
-		vendor: [
-            'src/assets/vendor/**/*.css',
-            'src/assets/vendor/**/*.js'
+		lib: [
+            'src/assets/lib/**/*.css',
+            'src/assets/lib/**/*.js'
          ]
 	},
 	watch:{
@@ -105,7 +105,7 @@ gulp.task('build-js', function() {
 gulp.task('build-css', function() {
     gulp.src(path.src.css) 
         .pipe(mediaGroup())							// Collect media queris together
-        .pipe(autoprefixer()) 						// Add vendor prefixes
+        .pipe(autoprefixer()) 						// Add lib prefixes
         .pipe(csso()) 								// Compretion css
         .pipe(gulp.dest(path.dist.css))
 });
@@ -127,16 +127,16 @@ gulp.task('build-fonts', function() {
 });
 
 
-gulp.task('build-vendor', function(){
-	gulp.src(path.src.vendor)
-	.pipe(gulp.dest(path.dist.vendor))
+gulp.task('build-lib', function(){
+	gulp.src(path.src.lib)
+	.pipe(gulp.dest(path.dist.lib))
 })
 
 
 // **********  Tasks for build all project  **********
 
 
-gulp.task('build', ['build-html', 'build-js', 'build-css', 'build-img', 'build-fonts', 'build-vendor']);
+gulp.task('build', ['build-html', 'build-js', 'build-css', 'build-img', 'build-fonts', 'build-lib']);
 
 
 // ********** Localhost task **********
