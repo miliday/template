@@ -4,4 +4,6 @@
 *.code-workspace
 /dist
 /src/assets/css
+/src/assets/js/main.js
+/src/assets/js/main.js.map
 package-lock.json
