@@ -23,7 +23,7 @@
     <section class="b-page">
         <header class="b-header b-page__header">
             <!-- desktop-header -->
-            <div class="b-header-desktop b-header__desktop">
+            <div class="b-header-desktop b-header__desktop b-header__desktop_sticky">
                 <div class="b-header-desktop__container">
                     <div class="b-header-desktop__row">
                         <div class="b-header-desktop__col">
@@ -50,7 +50,7 @@
                                         <a href="blank.html">Link</a>
                                     </li>
                                     <li>
-                                        <a href="blank.html" data-scroll-to-trigger>
+                                        <a href="blank.html" data-scroll-to-block-trigger>
                                             scroll
                                         </a>
                                     </li>
@@ -116,11 +116,11 @@
             </div>
         </header>
 
-        <main class="b-content b-page__content" data-scroll-to-anchor>
+        <main class="b-content b-page__content">
             <section class="b-example-section b-content__section-example">
                 <div class="b-example-section__container">
                     <header class="b-example-section__header">
-                        <h2 class="b-title b-title_accent b-title_center b-example-section__title" data-qwe-qwe>
+                        <h2 class="b-title b-title_accent b-title_center b-example-section__title">
                             Get Started Markup Template
                         </h2>
                         <h3 class="b-subtitle b-subtitle_dark b-subtitle_center b-example-section__subtitle">
@@ -141,14 +141,14 @@
                             </div>
 
                             <div class="b-example-section__col">
-                                <h3 class="b-subtitle b-subtitle_dark b-example-section__subtitle" data-scroll-to-block>
+                                <h3 class="b-subtitle b-subtitle_dark b-example-section__subtitle">
                                     Example section subtitle
                                 </h3>
                                 <p class="b-text b-text_dark b-example-section__text">
                                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, doloremque? Veritatis quos eius consequuntur? Excepturi dicta, quo nihil minus fuga nobis eveniet ea nisi laboriosam consequuntur nam perspiciatis molestiae voluptatum quae, deserunt iusto
                                     rerum amet aperiam, enim unde maxime. Eos minima explicabo cum accusamus libero totam odio voluptatum autem beatae. At sunt vitae, corrupti fugit non iure magni nesciunt commodi ullam expedita dicta hic.
                                 </p>
-                                <p class="b-text b-text_dark b-example-section__text" data-tracking-postition-trigger>
+                                <p class="b-text b-text_dark b-example-section__text" data-tracking-postition-trigger data-scroll-to-block-anchor>
                                     Eos minima explicabo cum accusamus libero totam odio voluptatum autem beatae. At sunt vitae, corrupti fugit non iure magni nesciunt commodi ullam expedita dicta hic. Eos est corrupti porro aspernatur quisquam ab vitae officiis sit quas temporibus! Ipsam
                                     architecto, deleniti sed earum eos doloremque. Voluptate voluptates repudiandae, eveniet totam blanditiis reiciendis. Voluptate consequatur in cumque vero magni eos minus libero ullam.
                                 </p>
@@ -317,11 +317,10 @@
             }
         })
 
-        new ScrollToBlockPosition({
-            button: '[data-scroll-to-block]',
-            anchor: '[data-qwe-qwe]',
-            position: 'top'
-
+        new ScrollToBlock({
+            trigger: '[data-scroll-to-block-trigger]',
+            anchor: '[data-scroll-to-block-anchor]',
+            offset: $(window).height() / 2
         })
 
         $('body').on('testEvent', function() {
