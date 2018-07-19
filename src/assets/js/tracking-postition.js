@@ -51,57 +51,57 @@ class ItemTracking extends ItemTrackingParent {
         this.flagEvent = false
 
         // save class context 
-        let object = this        
+        let that = this        
 
         // handler scroll
-        this.handlerScroll(object)
+        this.handlerScroll(that)
     }
 
     // visibility action function
-    visibilityAction(object) {
+    visibilityAction(that) {
         
         // enable callBack function
-        object.callBack()
+        that.callBack()
     
         // call function custom event 
-        object.customEvent(object)
+        that.customEvent(that)
     }
 
     // enable custom event
-    customEvent(object) {
+    customEvent(that) {
 
         // check necessity in custom event
-        if (object.eventName && !object.flagEvent) {
+        if (that.eventName && !that.flagEvent) {
 
             // inverse state flag
-            object.flagEvent = !object.flagEvent
+            that.flagEvent = !that.flagEvent
 
             // output a custom event on the place
-            object.eventPlace.trigger(object.eventName)
+            that.eventPlace.trigger(that.eventName)
         }
     }
 
     // enable scroll handler
-    handlerScroll(object) {
+    handlerScroll(that) {
         
         // handler scroll in place
-        object.place.on('scroll', function() {
+        that.place.on('scroll', function() {
             
             // check element view in screen
-            if (object.calcPosition(object) <= 0) {
+            if (that.calcPosition(that) <= 0) {
 
                 // run callBack function of config
-                object.visibilityAction(object) 
+                that.visibilityAction(that) 
             }
             
         })
     }
 
     // to calc position block in window
-    calcPosition(object) {
+    calcPosition(that) {
 
         // get offset top trigger subtract window height and add offset of config
-        let calc = object.trigger.eq(0).offset().top - object.place.scrollTop() - object.window.height() + object.offset
+        let calc = that.trigger.eq(0).offset().top - that.place.scrollTop() - that.window.height() + that.offset
 
         return Math.round(calc)
     }
