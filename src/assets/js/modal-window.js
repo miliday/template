@@ -29,108 +29,108 @@ class ModalWindow {
         this.flag   = false
         
         // save class context 
-        let object  = this
+        let that  = this
 
         // initialize modal window creation
-        this.createModal(object)
-        this.buildModal(object)
+        this.createModal(that)
+        this.buildModal(that)
 
         // append modal in body
         $('body').append(this.modal)
         
         // toggling the visibility of the modal window
-        this.handlerOpen(object)
-        this.handlerClose(object)
+        this.handlerOpen(that)
+        this.handlerClose(that)
     }
 
     // creating modal window components
-    createModal(object) {
+    createModal(that) {
 
         // create modal
-        object.modal = document.createElement('div')
-        object.modal = $(object.modal)
-        object.modal.addClass('b-modal-window')
+        that.modal = document.createElement('div')
+        that.modal = $(that.modal)
+        that.modal.addClass('b-modal-window')
 
         // create modal close btn
-        object.triggerClose = document.createElement('div')
-        object.triggerClose = $(object.triggerClose)
-        object.triggerClose.addClass('b-modal-window__close')
+        that.triggerClose = document.createElement('div')
+        that.triggerClose = $(that.triggerClose)
+        that.triggerClose.addClass('b-modal-window__close')
         
         // create modal container
-        object.modalContainer = document.createElement('div')
-        object.modalContainer = $(object.modalContainer)
-        object.modalContainer.addClass('b-modal-window__container')
+        that.modalContainer = document.createElement('div')
+        that.modalContainer = $(that.modalContainer)
+        that.modalContainer.addClass('b-modal-window__container')
         
         // create modal title
-        object.modalTitle = document.createElement('div')
-        object.modalTitle = $(object.modalTitle)
-        object.modalTitle.addClass('b-modal-window__title')
-        object.modalTitle.text(object.title)
+        that.modalTitle = document.createElement('div')
+        that.modalTitle = $(that.modalTitle)
+        that.modalTitle.addClass('b-modal-window__title')
+        that.modalTitle.text(that.title)
         
         // create modal content wrapper
-        object.modalContent = document.createElement('div')
-        object.modalContent = $(object.modalContent)
-        object.modalContent.addClass('b-modal-window__content')
+        that.modalContent = document.createElement('div')
+        that.modalContent = $(that.modalContent)
+        that.modalContent.addClass('b-modal-window__content')
     }
     
     // build a modal window of components
-    buildModal(object) {
+    buildModal(that) {
 
         // build modal
-        object.modal.append(object.triggerClose, object.modalContainer)
-        object.modalContainer.append(object.modalTitle, object.modalContent)
-        object.modalContent.append(object.contentElem)
+        that.modal.append(that.triggerClose, that.modalContainer)
+        that.modalContainer.append(that.modalTitle, that.modalContent)
+        that.modalContent.append(that.contentElem)
     }
 
     // handler open modal
-    handlerOpen(object) {
+    handlerOpen(that) {
 
         // check event click open btn
-        object.triggerOpen.click(function() {           
-            object.modalOpen(object)
+        that.triggerOpen.click(function() {           
+            that.modalOpen(that)
         })
     }
     
     // handler close modal
-    handlerClose(object) {
+    handlerClose(that) {
         
         // check event click close btn
-        object.triggerClose.click(function() {
-            object.modalClose(object)
+        that.triggerClose.click(function() {
+            that.modalClose(that)
         })
     }
     
     // interface close modal
-    modalClose(object) {
+    modalClose(that) {
         
         // chekc state flag
-        if (object.flag) {
+        if (that.flag) {
             
             // inverse state flag
-            object.flag = !object.flag
+            that.flag = !that.flag
             
             // close modal
-            object.modal.removeClass('b-modal-window_collapse')
+            that.modal.removeClass('b-modal-window_collapse')
             
             // unlock scroll body
-            object.scrollControll('body', 'on')
+            that.scrollControll('body', 'on')
         }
     }
     
     // interface open modal
-    modalOpen(object) {
+    modalOpen(that) {
         
         // chekc state flag
-        if (!object.flag) {
+        if (!that.flag) {
             
             // inverse state flag
-            object.flag = !object.flag
+            that.flag = !that.flag
             
             // open modal
-            object.modal.addClass('b-modal-window_collapse')
+            that.modal.addClass('b-modal-window_collapse')
             
             // lock scroll body
-            object.scrollControll('body', 'off')
+            that.scrollControll('body', 'off')
         }
     }
 
