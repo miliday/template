@@ -150,7 +150,7 @@ gulp.task('webserver', function() {
 
 // **********  Watch task + reload  **********
 gulp.task('js-r', function(){
-    return gulp.src(path.src.js)
+    return gulp.src('src/assets/js/**/*')
     .pipe(sourcemaps.init())
     .pipe(concat('main.js'))
     .pipe(sourcemaps.write('', {
@@ -179,7 +179,7 @@ gulp.task('watch-r', ['webserver', 'sass-r', 'js-r'], function() {
 
 // **********  Watch task  **********
 gulp.task('js', function(){
-    return gulp.src(path.src.js)
+    return gulp.src('src/assets/js/**/*')
     .pipe(sourcemaps.init())
     .pipe(concat('main.js'))
     .pipe(sourcemaps.write('', {
