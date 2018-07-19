@@ -20,13 +20,14 @@ var gulp			= require('gulp'),
 	rename			= require('gulp-rename'),
 	imgmin			= require('gulp-imagemin'),
 	pngquant		= require('imagemin-pngquant'),
-	rigger			= require('gulp-rigger'),
 	sass			= require('gulp-sass'),
 	sourcemaps		= require('gulp-sourcemaps'),
 	uglify			= require('gulp-uglify'),	
 	babel			= require('gulp-babel'),
 	htmlmin			= require('gulp-htmlmin'),
-	mediaGroup		= require('gulp-group-css-media-queries'),
+    mediaGroup		= require('gulp-group-css-media-queries'),
+    concat          = require('gulp-concat'),
+    clean           = require('gulp-clean'),
 	reload			= browserSync.reload;
 
 var serverConfig = {
@@ -58,43 +59,45 @@ var path = {
 		html: 	'src/*.html',
 		css: 	'src/assets/css/main.css',
 		scss: 	'src/assets/scss/main.scss',
-		js: 	'src/assets/js/*.js',
+		js: 	'src/assets/js/main.js',
 		img: 	'src/assets/img/**/*.*',
 		fonts: 	'src/assets/font/**/*.*',
-		lib: [
-            'src/assets/lib/**/*.css',
-            'src/assets/lib/**/*.js'
-         ]
+        lib:    [
+                'src/assets/lib/**/*.css',
+                'src/assets/lib/**/*.js'
+            ]
 	},
 	watch:{
 		html: 	'src/*.html',
 		scss: 	'src/assets/scss/main.scss',
 		js: 	'src/assets/js/*.js'
-	}
+    }
 }
 
 
 
 
 
-// **********  Tasks for gulp  **********
+// **********  Clean dist repository  **********
+
+gulp.task('rm-dist', function () {
+    gulp.src('dist')
+        .pipe(clean())
+});
 
 
 
 
-
-// **********  Tasks fir build project  **********
+// **********  Tasks for build project  **********
 
 gulp.task('build-html', function() {
     gulp.src(path.src.html) 
-        .pipe(rigger()) 							// Include files html. Example: //= template/_footer.html
         // .pipe(htmlmin({collapseWhitespace: true}))	// Minification html  // Uncomment if you need compressed HTML
         .pipe(gulp.dest(path.dist.html))
 });
 
 gulp.task('build-js', function() {
     gulp.src(path.src.js) 							// Initialize sourcemap
-        .pipe(rigger())                             // Include files js. Example: //= ../../function.js
         .pipe(babel({                               // Change to prev version
             presets: ['env']
         })) 
@@ -138,7 +141,6 @@ gulp.task('build-lib', function(){
 
 gulp.task('build', ['build-html', 'build-js', 'build-css', 'build-img', 'build-fonts', 'build-lib']);
 
-
 // ********** Localhost task **********
 
 gulp.task('webserver', function() {
@@ -147,6 +149,16 @@ gulp.task('webserver', function() {
 
 
 // **********  Watch task + reload  **********
+gulp.task('js-r', function(){
+    return gulp.src(path.src.js)
+    .pipe(sourcemaps.init())
+    .pipe(concat('main.js'))
+    .pipe(sourcemaps.write('', {
+        sourceMappingURLPrefix: ''
+    }))
+    .pipe(gulp.dest('./src/assets/js/'))
+    .pipe(browserSync.reload({stream: true}));
+})
 
 gulp.task('sass-r', function(){
     return gulp.src(path.src.scss)
@@ -159,13 +171,22 @@ gulp.task('sass-r', function(){
     .pipe(browserSync.reload({stream: true}));
 });
 
-gulp.task('watch-r', ['webserver', 'sass-r'], function() {
+gulp.task('watch-r', ['webserver', 'sass-r', 'js-r'], function() {
     gulp.watch(path.watch.scss, ['sass-r']);
 	gulp.watch(path.watch.html, reload);
-	gulp.watch(path.watch.js, reload);
+	gulp.watch(path.watch.js, ['js-r']);
 });
 
 // **********  Watch task  **********
+gulp.task('js', function(){
+    return gulp.src(path.src.js)
+    .pipe(sourcemaps.init())
+    .pipe(concat('main.js'))
+    .pipe(sourcemaps.write('', {
+        sourceMappingURLPrefix: ''
+    }))
+    .pipe(gulp.dest('./src/assets/js/'))
+})
 
 gulp.task('sass', function(){
     return gulp.src(path.src.scss)
@@ -177,6 +198,7 @@ gulp.task('sass', function(){
     .pipe(gulp.dest('./src/assets/css/'))
 });
 
-gulp.task('watch', ['webserver', 'sass'], function() {
+gulp.task('watch', ['webserver', 'sass', 'js'], function() {
     gulp.watch(path.watch.scss, ['sass']);
+    gulp.watch(path.watch.js, ['js']);
 });
