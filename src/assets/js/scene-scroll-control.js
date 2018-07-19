@@ -23,52 +23,52 @@ class SceneScrollControl {
         this.flag       = false
 
         // save class context 
-        let object = this
+        let that = this
 
         // request call handler
-        this.callHandler(object)
+        this.callHandler(that)
     }
     
     // call handler
-    callHandler(object) {
+    callHandler(that) {
 
         // handler disable block scroll
-        object.tracking.on('sceneScrollOff', () => {
-            object.scrollSceneOff(object)
+        that.tracking.on('sceneScrollOff', () => {
+            that.scrollSceneOff(that)
         })
         
         // handler enable block scroll
-        object.tracking.on('sceneScrollOn', () => {
-            object.scrollSceneOn(object)
+        that.tracking.on('sceneScrollOn', () => {
+            that.scrollSceneOn(that)
         })
     }
 
     // disable scrolling on the block
-    scrollSceneOff(object) {
+    scrollSceneOff(that) {
 
         // chekc state flag
-        if (!object.flag) {
+        if (!that.flag) {
             
             // inverse state flag
-            object.flag = !object.flag
+            that.flag = !that.flag
             
-            object.saveState = object.scene.css('overflow-y')
-            object.scene.css('overflow-y', 'hidden')
+            that.saveState = that.scene.css('overflow-y')
+            that.scene.css('overflow-y', 'hidden')
         }
     }
     
     // enable scrolling on the scene
-    scrollSceneOn(object) {
+    scrollSceneOn(that) {
 
         // chekc state flag
-        if (object.flag) {
+        if (that.flag) {
     
             // inverse state flag
-            object.flag = !object.flag
+            that.flag = !that.flag
     
             // unlock scroll scene
-            object.scene.css('overflow-y', object.saveState)
-            object.saveState = null
+            that.scene.css('overflow-y', that.saveState)
+            that.saveState = null
         }
     }
 }
