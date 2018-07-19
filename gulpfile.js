@@ -52,7 +52,7 @@ var path = {
         js: 	'dist/assets/js/',
         img: 	'dist/assets/img/',
         fonts: 	'dist/assets/font/',
-        lib: 'dist/assets/lib/'
+        lib:    'dist/assets/lib/'
 	},
 	src:{
 		html: 	'src/*.html',
