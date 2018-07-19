@@ -1,71 +1,72 @@
-class ScrollToBlockParent{
+class ScrollToBlockPositionParent{
 	constructor(){
 
 		// default value variables
-		this.place 	= $('html')
-		this.offset = 0
-		this.speed 	= 600
+		this.scrollContainer = $('body, html')
+		this.position = 'top'
 	}
 }
 
 
-class ScrollToBlock extends ScrollToBlockParent {
+class ScrollToBlockPosition extends ScrollToBlockPositionParent{
 	constructor(config){
 
 		super()
 
 		// accept config options
-		this.trigger 	= $(config.trigger)
-		this.anchor 	= $(config.anchor)
+		this.button = $(config.button)
+		this.anchor = $(config.anchor)
 
-		if (config.offset) {
-			this.offset = config.offset
-		}
-		
-		if (config.speed) {
-			this.speed = config.speed
+		if(config.position){
+			this.position = config.position
 		}
 
-		if (config.place) {
-			this.place = $(config.place)
+		if(config.scrollContainer){
+			this.scrollContainer = $(config.scrollContainer)
 		}
 
 		// save class context
-		let that = this
+		let object = this
 
-		// handler click
-		this.callHandler(that)
-	}
-
-    // enable event handler
-	callHandler(that) {
-
-		// enable click handler
-		that.trigger.on('click', function() {
-
-			// disable default action
-			event.preventDefault()
-
-			// enable scrolling
-			that.scroll(that)
-		})
-	}
-	
-	// function for scrolling the place to the anchor
-	scroll(that) {
 		
-		// Animation scroll
-		that.place.animate({
-			scrollTop: that.calcPosition(that)
-		}, that.speed)
+		this.handlerClick(object)
+		this.getCoords(object)
+		this.positionOnScroll(object)
 	}
 
-	// Returns the required scrollTop from offsetTop
-	calcPosition(that) {
 
-		// calc variables
-		let anchorOffsetTop = that.anchor.eq(0).offset().top
-		let calc			= anchorOffsetTop - that.offset		
-		return calc
+	// learn how to scroll a lot
+	getCoords(object){
+        let box = object.anchor[0].getBoundingClientRect();
+        return{
+            center:     document.documentElement.scrollTop + box.top - (window.innerHeight / 2 - 40),
+            top:        document.documentElement.scrollTop + box.top,
+            bottom:     document.documentElement.scrollTop + box.top - (window.innerHeight - 80)
+        }
+    }        
+
+    // comparison of transmitted offset values
+	positionOnScroll(object){
+        if (!object.position){
+            object.position = object.getCoords(object).top
+        }
+        else if(object.position === 'center'){
+            object.position = object.getCoords(object).center
+        }
+        else if(object.position === 'bottom'){
+            object.position = object.getCoords(object).bottom
+        }
+        else if(object.position === 'top'){
+            object.position = object.getCoords(object).top
+        }
+        return object.position
+    }
+
+    // enable click handler
+	handlerClick(object){
+
+		object.button.on('click', function(){
+			object.scrollContainer.animate({scrollTop: object.positionOnScroll(object)}, 500)
+		})
 	}
 }

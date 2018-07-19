@@ -26,71 +26,71 @@ class MobileMenu {
         this.flagBgreak = false
 
         // save class context 
-        let that = this
+        let object = this
 
         // launch of the menu visibility toggle handler
-        this.handlerToggle(that)
+        this.handlerToggle(object)
     }
 
     // handler toggle menu
-    handlerToggle(that) {
+    handlerToggle(object) {
 
         // track the click event of the toggle
-        that.menuToggle.click(function () {
+        object.menuToggle.click(function () {
 
             // check whether the menu is open
-            if (that.flag) {
+            if (object.flag) {
                 
                 // close the menu
-                that.menuClose(that)
+                object.menuClose(object)
             }
            
             // check whether the menu is close
-            else if (!that.flag) {
+            else if (!object.flag) {
 
                 // open the menu
-                that.menuOpen(that)
+                object.menuOpen(object)
             } 
             
         })
     }
 
     // interface open menu
-    menuOpen(that) {
+    menuOpen(object) {
 
         // inverse state flag
-        that.flag = !that.flag
+        object.flag = !object.flag
 
         // open menu
-        that.menu.addClass(that.menuClassCollapse)
-        that.menuToggle.addClass(that.menuToggleClassClose)
+        object.menu.addClass(object.menuClassCollapse)
+        object.menuToggle.addClass(object.menuToggleClassClose)
 
         // lock scroll body
-        that.scrollControll('body', 'off')
+        object.scrollControll('body', 'off')
 
         //enable the resize handler
-        that.resizeHandler('on', that, 'body')
+        object.resizeHandler('on', object, 'body')
     }
 
     // interface close menu
-    menuClose(that) {
+    menuClose(object) {
 
             // inverse state flag
-            that.flag = !that.flag
+            object.flag = !object.flag
 
             // close menu
-            that.menu.removeClass(that.menuClassCollapse)
-            that.menuToggle.removeClass(that.menuToggleClassClose)
+            object.menu.removeClass(object.menuClassCollapse)
+            object.menuToggle.removeClass(object.menuToggleClassClose)
 
             // unlock scroll body
-            that.scrollControll('body', 'on')
+            object.scrollControll('body', 'on')
 
             // disable the resize handler
-            that.resizeHandler('off', that, 'body')
+            object.resizeHandler('off', object, 'body')
     }
 
     // handler resize
-    resizeHandler(command, that, place) {
+    resizeHandler(command, object, place) {
 
         // сhecking the command to enable the handler
         if (command == 'on') {
@@ -99,23 +99,23 @@ class MobileMenu {
             $(window).on('resize', function () {
             
                 // the window width is greater than or equal to the breakpoint
-                if ($(window).width() >= that.breakPoint && !that.flagBgreak) {
+                if ($(window).width() >= object.breakPoint && !object.flagBgreak) {
                     
                     // inverse state flag Break
-                    that.flagBgreak = true
+                    object.flagBgreak = true
     
                     // unlock scroll body
-                    that.scrollControll(place, 'on')
+                    object.scrollControll(place, 'on')
                 } 
                 
                 // the width of the window is less than the breakpoint
-                else if ($(window).width() < that.breakPoint && that.flagBgreak) {
+                else if ($(window).width() < object.breakPoint && object.flagBgreak) {
                     
                     // inverse state flag Break
-                    that.flagBgreak = false
+                    object.flagBgreak = false
     
                     // lock scroll body
-                    that.scrollControll(place, 'off')
+                    object.scrollControll(place, 'off')
                 }
             })
         } 
@@ -127,7 +127,7 @@ class MobileMenu {
             $(window).off('resize')
 
             // false state flag Break
-            that.flagBgreak = false
+            object.flagBgreak = false
         }
 
     }
