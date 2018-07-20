@@ -81,9 +81,10 @@ var path = {
 // **********  Clean dist repository  **********
 
 gulp.task('rm-dist', function () {
-    gulp.src('dist')
+    return gulp.src('dist')
         .pipe(clean())
 });
+
 
 
 
@@ -129,17 +130,20 @@ gulp.task('build-fonts', function() {
         .pipe(gulp.dest(path.dist.fonts))
 });
 
-
 gulp.task('build-lib', function(){
 	gulp.src(path.src.lib)
 	.pipe(gulp.dest(path.dist.lib))
 })
 
 
+
+
 // **********  Tasks for build all project  **********
 
-
 gulp.task('build', ['build-html', 'build-js', 'build-css', 'build-img', 'build-fonts', 'build-lib']);
+
+
+
 
 // ********** Localhost task **********
 
@@ -148,9 +152,21 @@ gulp.task('webserver', function() {
 });
 
 
+
+
+// ********** Clean js for watcher **********
+
+gulp.task('clean-js', function() {
+    return gulp.src(['src/assets/js/main.js', 'src/assets/js/main.js.map'])
+    .pipe(clean())
+})
+
+
+
 // **********  Watch task + reload  **********
-gulp.task('js-r', function(){
-    gulp.src('src/assets/js/**/*')
+
+gulp.task('js-r', ['clean-js'], function(){
+    return gulp.src('src/assets/js/**/*')
     .pipe(sourcemaps.init())
     .pipe(concat('main.js'))
     .pipe(sourcemaps.write('', {
@@ -177,9 +193,13 @@ gulp.task('watch-r', ['webserver', 'sass-r', 'js-r'], function() {
 	gulp.watch(path.watch.js, ['js-r']);
 });
 
+
+
+
 // **********  Watch task  **********
-gulp.task('js', function(){
-    gulp.src('src/assets/js/**/*')
+
+gulp.task('js', ['clean-js'], function(){
+    return gulp.src('src/assets/js/**/*')
     .pipe(sourcemaps.init())
     .pipe(concat('main.js'))
     .pipe(sourcemaps.write('', {
