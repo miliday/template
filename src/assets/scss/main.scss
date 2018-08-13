@@ -54,70 +54,8 @@
 @import "components/_menu-mobile-header";
 @import "components/_modal-window";
 
-// Modal-examole
-
-.b-modal-test {}
-
-.b-modal-test__row {
-    @include row-flex();
-}
-
-.b-modal-test__col {
-    @include col();
-    @include size(6);
-    @include size-sm(12);
-    @include sm-block() {
-        @include colVerticalOffset();
-    }
-}
 
 
-// Section-example
-.b-example-section {
-    width: 100%;
-}
-
-.b-example-section__container {
-    @include wrapper();
-}
-
-.b-example-section__header {
-    margin-bottom: $marginElement;
-}
-
-.b-example-section__title {}
-
-.b-example-section__subtitle {
-    margin-bottom: $paragraphMargin;
-}
-
-.b-example-section__description {}
-
-.b-example-section__main {}
-
-.b-example-section__row {
-    @include row-flex();
-    align-items: center;
-}
-
-.b-example-section__col {
-    @include col();
-    @include size(6);
-    @include size-sm(12);
-    @include sm-block() {
-        @include colVerticalOffset();
-    }
-}
-
-.b-example-section__text {
-    @include paragraphMargin();
-}
-
-.b-example-section__content-img {
-    display: block;
-    margin: 0 auto;
-    cursor: pointer;
-}
 
 // title
 .b-title {
