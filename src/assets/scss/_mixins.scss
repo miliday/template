@@ -31,6 +31,63 @@
     }
 }
 
+@mixin sectionPadding(){
+    padding-top: $sectionPadding;
+    padding-bottom: $sectionPadding;
+    @include sm-block() {
+        padding-top: $sectionPadding / 2;
+        padding-bottom: $sectionPadding / 2;
+    }
+}
+
+@mixin sectionSmallPadding(){
+    padding-top: $sectionSmallPadding;
+    padding-bottom: $sectionSmallPadding;
+    @include sm-block() {
+        padding-top: $sectionSmallPadding / 2;
+        padding-bottom: $sectionSmallPadding / 2;
+    }
+}
+
+@mixin sectionLargePadding(){
+    padding-top: $sectionLargePadding;
+    padding-bottom: $sectionLargePadding;
+    @include sm-block() {
+        padding-top: $sectionLargePadding / 2;
+        padding-bottom: $sectionLargePadding / 2;
+    }
+}
+
+@mixin sectionMargin(){
+    margin-top: $sectionMargin;
+    margin-bottom: $sectionMargin;
+    @include sm-block() {
+        margin-top: $sectionMargin / 2;
+        margin-bottom: $sectionMargin / 2;
+    }
+    &:first-child {
+        margin-top: 0;
+    }
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@mixin sectionSmallMargin(){
+    margin-top: $sectionSmallMargin;
+    margin-bottom: $sectionSmallMargin;
+    @include sm-block() {
+        margin-top: $sectionSmallMargin / 2;
+        margin-bottom: $sectionSmallMargin / 2;
+    }
+    &:first-child {
+        margin-top: 0;
+    }
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
 @mixin paragraphMargin(){
     margin-top: $paragraphMargin;
     margin-bottom: $paragraphMargin;
@@ -87,7 +144,7 @@
 
 // Additional
 
-@mixin hoverOpacity {
+@mixin hoverOpacity() {
     opacity: 1;
     &:hover {
         opacity: .8;

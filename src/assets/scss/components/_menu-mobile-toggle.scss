@@ -1,0 +1,66 @@
+/*
+    ---------------------------------------------------------------
+    Startup template creator - "Made with love, especially for you"
+    ---------------------------------------------------------------
+    nickname: Michael Holiday
+    organization: "Totonis.com"
+    date: 18.06.2018
+    email: mr.michael.holiday@gmail.com
+    ---------------------------------------------------------------
+*/
+
+.b-menu-toggle {
+    width: 30px;
+    height: 22px;
+    position: relative;
+    cursor: pointer;
+}
+
+.b-menu-toggle>.b-menu-toggle__line {
+    width: 100%;
+    height: 4px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    transform-origin: center;
+    background-color: $lightColor;
+    border-radius: rem(2px);
+    opacity: 1;
+    transition: width 100ms linear, top 100ms linear 150ms, opacity 10ms linear 90ms, transform 100ms linear;
+    &:nth-child(1) {
+        top: 0;
+    }
+    &:nth-child(2) {
+        top: calc(50% - 2px);
+    }
+    &:nth-child(3) {
+        top: calc(100% - 4px);
+    }
+}
+
+.b-menu-toggle:hover>.b-menu-toggle__line {
+    &:nth-child(1) {
+        width: 110%;
+    }
+    &:nth-child(2) {
+        width: 90%;
+    }
+    &:nth-child(3) {
+        width: 110%;
+    }
+}
+
+.b-menu-toggle.b-menu-toggle_close>.b-menu-toggle__line {
+    transition: width 100ms linear, top 100ms linear, opacity 10ms linear 100ms, transform 100ms linear 150ms;
+    &:nth-child(1) {
+        top: calc(50% - 2px);
+        transform: translateX(-50%) rotate(45deg);
+    }
+    &:nth-child(2) {
+        opacity: 0;
+    }
+    &:nth-child(3) {
+        top: calc(50% - 2px);
+        transform: translateX(-50%) rotate(-45deg);
+    }
+}
