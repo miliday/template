@@ -740,6 +740,22 @@
     z-index: 1;
 }
 
+// b-modal-test
+
+.b-modal-test {
+    @include row-flex();
+}
+
+.b-modal-test__col-left {
+    @include col();
+    @include size(6);
+}
+
+.b-modal-test__col-right {
+    @include col();
+    @include size(6);
+}
+
 // b-example
 
 .b-example {
