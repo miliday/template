@@ -48,7 +48,6 @@
     font-weight: 400;
     text-decoration: none;
     transition: opacity .2s linear;
-    @include hoverOpacity();
 }
 
 .b-menu-mobile-header__list>li.active>a {}

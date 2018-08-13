@@ -39,18 +39,13 @@ $neutralColor: #607d8b;
 $firstFont: 'Roboto', sans-serif;
 $secondFont: 'Open Sans', sans-serif;
 
-// Margins
+// Offsets
 
-$paddingBlock: rem(120px);
-$marginElement: rem(60px);
 $paragraphMargin: rem(15px);
-$colVerticalOffset: rem(30px);
-$rowVerticalOffset: rem(15px);
 
-// Section Padding
+// Section Offsets
 
 $sectionPadding: rem(100px);
-$sectionLargePadding: rem(200px);
-$sectionSmallPadding: rem(50px);
+$sectionPaddingMobile: rem(50px);
 
 $sectionMargin: rem(100px);
