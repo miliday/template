@@ -90,11 +90,15 @@ dir {
     -webkit-padding-start: 0;
 }
 
-ul {}
+ul {
+    list-style-type: none;
+}
 
 ol {}
 
-li {}
+li {
+    list-style: none;
+}
 
 // Tables
 caption {}
