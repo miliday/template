@@ -397,20 +397,12 @@
     background-color: #263238;
 }
 
-.b-header-desktop__container {
+.b-header-desktop__inner {
     height: inherit;
     @include wrapper();
-}
-
-.b-header-desktop__row {
-    height: inherit;
-    @include row-flex();
+    display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.b-header-desktop__col {
-    @include col();
 }
 
 .b-header-desktop__logo {
@@ -418,6 +410,7 @@
     color: $lightColor;
     font-size: rem(36px);
     font-weight: 900;
+    @include hover(opacity, 1, .8, .1s);
 }
 
 .b-header-desktop__menu {
@@ -569,24 +562,19 @@
     overflow: hidden;
     transition: all .4s linear;
     background-color: #263238;
-}
-
-.b-footer-desktop__container {
-    height: inherit;
-    @include wrapper();
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.b-footer-desktop__row {
-    @include row-flex();
+.b-footer-desktop__inner {
+    height: inherit;
+    width: 100%;
+    @include wrapper();
+    display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
-}
-
-.b-footer-desktop__col {
-    @include col();
 }
 
 .b-footer-desktop__logo {
@@ -594,6 +582,7 @@
     color: $lightColor;
     font-size: rem(36px);
     font-weight: 900;
+    @include hover(opacity, 1, .8, .1s);
 }
 
 .b-footer-desktop__menu {
@@ -620,7 +609,7 @@
 
 .b-footer-desktop__copyright {
     width: 100%;
-    margin-top: rem(30px);
+    padding: rem(15px) 0;
     font-family: $firstFont;
     color: $neutralColor;
     text-align: center;
