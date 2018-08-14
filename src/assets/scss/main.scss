@@ -49,10 +49,169 @@
 @import "_general";
 @import "_fonts";
 
-// Components-import
-@import "components/_menu-mobile-header";
+// Components-import 
 @import "components/_menu-mobile-toggle";
 @import "components/_modal-window";
+
+// .b-title
+.b-title {
+    display: flex;
+    flex-direction: row;
+    font-family: $firstFont;
+    color: $darkColor;
+    text-align: left;
+    font-size: rem(60px);
+    font-weight: 700;
+    line-height: 1.4;
+
+    @include sm(font-size, rem(38px));
+}
+
+.b-title_light {
+    color: $lightColor;
+}
+
+.b-title_accent {
+    color: $accentColor;
+}
+
+.b-title__span {
+    display: inline-flex;
+    font-size: rem(60px);
+}
+
+.b-title__span_word-glue {
+    font-size: 0;
+    white-space: nowrap;
+}
+
+.b-title__span_light {
+    color: $lightColor;
+}
+
+.b-title__span_accent {
+    color: $accentColor;
+}
+
+// .b-subtitle
+.b-subtitle {
+    display: flex;
+    flex-direction: column;
+    font-family: $firstFont;
+    color: $darkColor;
+    text-align: left;
+    font-size: rem(35px);
+    font-weight: 600;
+    line-height: 1.4;
+
+    @include sm(font-size, rem(26px));
+}
+
+.b-subtitle_light {
+    color: $lightColor;
+}
+
+.b-subtitle_accent {
+    color: $accentColor;
+}
+
+.b-subtitle__span {
+    display: inline-flex;
+    font-size: rem(35px);
+}
+
+.b-subtitle__span_word-glue {
+    font-size: 0;
+    white-space: nowrap;
+}
+
+.b-subtitle__span_light {
+    color: $lightColor;
+}
+
+.b-subtitle__span_accent {
+    color: $accentColor;
+}
+
+// .b-description
+.b-description {
+    display: flex;
+    flex-direction: row;
+    font-family: $secondFont;
+    color: $darkColor;
+    text-align: left;
+    font-size: rem(24px);
+    font-weight: 600;
+    line-height: 1.4;
+
+    @include sm(font-size, rem(18px));
+}
+
+.b-description_light {
+    color: $lightColor;
+}
+
+.b-description_accent {
+    color: $accentColor;
+}
+
+.b-description__span {
+    font-size: rem(24px);
+    display: inline-flex;
+}
+
+.b-description__span_word-glue {
+    font-size: 0;
+    white-space: nowrap;
+}
+
+.b-description__span_light {
+    color: $lightColor;
+}
+
+.b-description__span_accent {
+    color: $accentColor;
+}
+
+// .b-text
+.b-text {
+    display: flex;
+    flex-direction: column;
+    font-family: $secondFont;
+    color: $darkColor;
+    text-align: left;
+    font-size: rem(18px);
+    font-weight: 600;
+    line-height: 1.4;
+
+    @include sm(font-size, rem(16px));
+}
+
+.b-text_light {
+    color: $lightColor;
+}
+
+.b-text_accent {
+    color: $accentColor;
+}
+
+.b-text__span {
+    display: inline-flex;
+    font-size: rem(18px);
+}
+
+.b-text__span_word-glue {
+    font-size: 0;
+    white-space: nowrap;
+}
+
+.b-text__span_light {
+    color: $lightColor;
+}
+
+.b-text__span_accent {
+    color: $accentColor;
+}
 
 // .b-section
 .b-section {
@@ -83,13 +242,14 @@
     overflow: hidden;
 }
 
-.b-section_bg-blackout::before {
+.b-section_blackout::before {
     content: '';
     height: 100%;
     width: 100%;
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 2;
     background-color: rgba(0, 0, 0, .6);
 }
 
@@ -123,16 +283,6 @@
     top: 0;
     left: 0;
     z-index: 1;
-}
-
-.b-section__blackout {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    background-color: rgba(0, 0, 0, .6);
 }
 
 .b-section__header {
@@ -203,165 +353,13 @@
     @include wrapper();
 }
 
-// .b-title
-.b-title {
-    display: flex;
-    flex-direction: row;
-    font-family: $firstFont;
-    color: $darkColor;
-    text-align: left;
-    font-size: rem(60px);
-    font-weight: 700;
-    line-height: 1.4;
-}
-
-.b-title_light {
-    color: $lightColor;
-}
-
-.b-title_accent {
-    color: $accentColor;
-}
-
-.b-title__span {
-    display: inline-flex;
-    font-size: rem(60px);
-}
-
-.b-title__span_word-glue {
-    font-size: 0;
-    white-space: nowrap;
-}
-
-.b-title__span_light {
-    color: $lightColor;
-}
-
-.b-title__span_accent {
-    color: $accentColor;
-}
-
-// .b-subtitle
-.b-subtitle {
-    display: flex;
-    flex-direction: column;
-    font-family: $firstFont;
-    color: $darkColor;
-    text-align: left;
-    font-size: rem(35px);
-    font-weight: 600;
-    line-height: 1.4;
-}
-
-.b-subtitle_light {
-    color: $lightColor;
-}
-
-.b-subtitle_accent {
-    color: $accentColor;
-}
-
-.b-subtitle__span {
-    display: inline-flex;
-    font-size: rem(35px);
-}
-
-.b-subtitle__span_word-glue {
-    font-size: 0;
-    white-space: nowrap;
-}
-
-.b-subtitle__span_light {
-    color: $lightColor;
-}
-
-.b-subtitle__span_accent {
-    color: $accentColor;
-}
-
-// .b-description
-.b-description {
-    display: flex;
-    flex-direction: row;
-    font-family: $secondFont;
-    color: $darkColor;
-    text-align: left;
-    font-size: rem(24px);
-    font-weight: 600;
-    line-height: 1.4;
-}
-
-.b-description_light {
-    color: $lightColor;
-}
-
-.b-description_accent {
-    color: $accentColor;
-}
-
-.b-description__span {
-    font-size: rem(24px);
-    display: inline-flex;
-}
-
-.b-description__span_word-glue {
-    font-size: 0;
-    white-space: nowrap;
-}
-
-.b-description__span_light {
-    color: $lightColor;
-}
-
-.b-description__span_accent {
-    color: $accentColor;
-}
-
-// .b-text
-.b-text {
-    display: flex;
-    flex-direction: column;
-    font-family: $secondFont;
-    color: $darkColor;
-    text-align: left;
-    font-size: rem(18px);
-    font-weight: 600;
-    line-height: 1.4;
-}
-
-.b-text_light {
-    color: $lightColor;
-}
-
-.b-text_accent {
-    color: $accentColor;
-}
-
-.b-text__span {
-    display: inline-flex;
-    font-size: rem(18px);
-}
-
-.b-text__span_word-glue {
-    font-size: 0;
-    white-space: nowrap;
-}
-
-.b-text__span_light {
-    color: $lightColor;
-}
-
-.b-text__span_accent {
-    color: $accentColor;
-}
-
 // .b-header
 .b-header {
     width: 100%;
     transition: all .2s linear;
     min-height: rem(120px);
     @include sm-block() {
-        min-height: rem(60px);
+        min-height: rem(80px);
     }
 }
 
@@ -381,7 +379,7 @@
 .b-header__mobile {
     height: 0;
     @include sm-block() {
-        height: rem(60px);
+        height: rem(80px);
     }
 }
 
@@ -430,6 +428,7 @@
 .b-header-desktop__menu li {
     display: inline-flex;
     flex-direction: row;
+    list-style: none;
 }
  
 .b-header-desktop__menu li a {
@@ -450,25 +449,24 @@
     overflow: hidden;
     transition: all .2s linear;
     background-color: #34444d;
+    box-shadow: 0 rem(10px) rem(40px) rgba(0, 0, 0, .2);
 }
 
-.b-header-mobile__container {
-    height: inherit;
+.b-header-mobile__inner {
     @include wrapper();
-}
-
-.b-header-mobile__row {
     height: inherit;
-    @include row-flex();
+    display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
 
-.b-header-mobile__col {
-    @include col();
+.b-header-mobile__logo {
+    font-family: $secondFont;
+    color: $lightColor;
+    font-size: rem(36px);
+    font-weight: 900;
 }
-
-.b-header-mobile__logo {}
 
 .b-header-mobile__toggle {
     z-index: 1;
@@ -492,12 +490,37 @@
     @include sm(transform, translate(-50%, -50%) scaleY(1));
 }
 
+.b-header-mobile__menu-inner {
+    @include absoluteCenter();
+    width: calc(50% - 110px);
+    max-height: calc(50% - 110px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+.b-header-mobile__menu-inner li {
+    list-style: none;
+    text-align: center;
+}
+
+.b-header-mobile__menu-inner li a {
+    font-family: $secondFont;
+    color: $lightColor;
+    font-size: rem(26px);
+    font-weight: 600;
+    padding: 10px 20px;
+}
+
+.b-header-mobile__menu-inner li.active a {}
+
 // .b-main
 .b-main {
     display: flex;
     flex-direction: column;
     transition: all .2s linear;
     background-color: #fff;
+    box-shadow: 0 rem(10px) rem(40px) rgba(0, 0, 0, .2);
 }
 
 .b-main__section {}
@@ -509,7 +532,7 @@
     overflow: hidden;
     transition: all .2s linear;
     @include sm-block() {
-        min-height: rem(530px);
+        min-height: rem(480px);
     }
 }
 
@@ -529,7 +552,7 @@
 .b-footer__mobile {
     height: 0;
     @include sm-block() {
-        height: rem(530px);
+        height: rem(480px);
     }
 }
 
@@ -537,6 +560,7 @@
     position: fixed;
     bottom: 0;
     left: 0;
+    z-index: -1;
 }
 
 // .b-footer-desktop
@@ -612,36 +636,49 @@
     background-color: #263238;
 }
 
-.b-footer-mobile__container {
+.b-footer-mobile__inner {
     height: inherit;
     @include wrapper();
     display: flex;
     flex-direction: column;
-    justify-content: center;
-}
-
-.b-footer-mobile__row {
-    @include row-flex();
-}
-
-.b-footer-mobile__col {
-    @include col();
-    @include size-sm(12);
-    justify-content: center;
+    justify-content: space-around;
 }
 
 .b-footer-mobile__logo {
+    font-family: $secondFont;
     text-align: center;
+    color: $lightColor;
+    font-size: rem(36px);
+    font-weight: 700;
+    padding: rem(10px) rem(20px);
 }
 
-.b-footer-mobile__menu {}
+.b-footer-mobile__menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.b-footer-mobile__menu li {
+    list-style: none;
+}
+
+.b-footer-mobile__menu li a {
+    font-family: $secondFont;
+    color: $lightColor;
+    font-size: rem(18px);
+    font-weight: 600;
+    padding: rem(10px) rem(20px);
+}
+
+.b-footer-mobile__menu li.active a {}
 
 .b-footer-mobile__copyright {
     font-family: $firstFont;
-    color: $neutralColor;
+    color: $lightColor;
     text-align: center;
     font-size: rem(16px);
-    font-weight: 400;
+    font-weight: 100;
 }
 
 // .b-page
@@ -681,11 +718,14 @@
 .b-modal-test__col-left {
     @include col();
     @include size(6);
+    @include size-sm(12);
+    @include sm(margin-bottom, 30px);
 }
 
 .b-modal-test__col-right {
     @include col();
     @include size(6);
+    @include size-sm(12);
 }
 
 // .b-example
@@ -698,6 +738,9 @@
     @include col();
     @include size(6);
     @include size-sm(12);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .b-example__col-right {
@@ -706,7 +749,9 @@
     @include size-sm(12);
 }
 
-.b-example__img {}
+.b-example__img {
+    @include sm(margin-bottom, rem(30px));
+}
 
 .b-example__subtitle {}
 
