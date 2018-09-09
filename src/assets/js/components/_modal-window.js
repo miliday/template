@@ -98,6 +98,16 @@ class ModalWindow {
         that.triggerClose.click(function() {
             that.modalClose(that)
         })
+
+        // check event click close btn
+        $(document).keydown(function(e) {
+            console.log(123);
+            
+            // ESCAPE key pressed
+            if (e.keyCode == 27) {
+                that.modalClose(that)
+            }
+        })
     }
     
     // interface close modal
