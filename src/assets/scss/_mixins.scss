@@ -61,3 +61,107 @@
         #{$property}: #{$valueEnd};        
     }
 }
+
+// Section
+
+
+@mixin bgImg($size, $position, $repeat) {
+    background-size: #{$size};
+    background-position: #{$position};
+    background-repeat: #{$repeat};
+}
+
+@mixin blackout($color, $zIndex) {
+    &:before {
+        content: '';
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: #{$size};
+        background-color: #{$color};
+    }
+}
+
+@mixin section() {
+    width: 100%;
+    position: relative;
+
+    &_padding {
+        padding-top: $sectionPadding;
+        padding-bottom: $sectionPadding;
+        @include sm-block() {
+            padding-top: $sectionPaddingMobile;
+            padding-bottom: $sectionPaddingMobile;
+        }
+    }
+    &__header {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: rem(60px);
+        z-index: 3;
+        &_container {
+            @include wrapper();
+        }
+    }
+    &__main {
+        position: relative;
+        z-index: 3;
+        &_container {
+            @include wrapper();
+        }
+    }
+    &__title {
+        &_center {
+            text-align: center;
+            align-self: center;
+        }
+        &_right {
+            text-align: right;
+            align-self: flex-end;
+        }
+    }
+    &__subtitle {
+        &_center {
+            text-align: center;
+            align-self: center;
+        }
+        &_right {
+            text-align: right;
+            align-self: flex-end;
+        }
+    }
+    &__description{
+        &_center {
+            text-align: center;
+            align-self: center;
+        }
+        &_right {
+            text-align: right;
+            align-self: flex-end;
+        }
+    }
+    &__text {
+        &_center {
+            text-align: center;
+            align-self: center;
+        }
+        &_right {
+            text-align: right;
+            align-self: flex-end;
+        }
+    }
+
+    &_bg-video {
+        overflow: hidden;
+    }
+    &__video {
+        width: auto;
+        height: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+}
