@@ -9,19 +9,30 @@
     ---------------------------------------------------------------
 */
 
-// Rem config
-$parentRem: 16px;
-$parentRemLg: 16px;
-$parentRemMd: 16px;
-$parentRemSm: 16px;
-$parentRemXs: 16px;
+.b-page {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    min-width: 320px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
-// Colors
-$firstColor: #00838f;
-$secondColor: #00838f;
-$lightColor: #ffffff;
-$darkColor: #000000;
+.b-page__header {
+    width: 100%;
+    height: auto;
+    z-index: 3;
+}
 
-// Fonts
-$firstFont: 'Roboto', sans-serif;
-$secondFont: 'Open Sans', sans-serif;
+.b-page__main {
+    width: 100%;
+    height: auto;
+    z-index: 2;
+}
+
+.b-page__footer {
+    width: 100%;
+    height: auto;
+}

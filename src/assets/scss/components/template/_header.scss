@@ -9,23 +9,34 @@
     ---------------------------------------------------------------
 */
 
-// Media
-@mixin media-max($break) {
-    @media screen and (max-width: #{$break}) {
-        @content;
-    }
+.b-header {
+    position: relative;
 }
 
-@mixin media-min($break) {
-    @media screen and (min-width: #{$break}) {
-        @content;
-    }
+.b-header__desk{
+    display: block;
+    width: 100%;
+    height: auto;
+
+    @include sm(display, none);
 }
 
-// Additional
-@mixin hover($property, $value, $speed, $function) {
-    transition: #{$property} #{$speed} #{$function};
-    &:hover {
-        #{$property}: #{$value};        
-    }
+.b-header__desk_sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.b-header__mob {
+    display: none;
+    width: 100%;
+    height: auto;
+    
+    @include sm(display, block);
+}
+
+.b-header__mob_sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
 }

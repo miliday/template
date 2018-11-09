@@ -1,0 +1,12 @@
+//- +menu({class: ''})
+//-     block
+
+//- +menuItem({href: '', text: ''})
+
+mixin menu(config = {})
+    ul(class=['b-menu', config.class])
+        block
+
+mixin menuItem(config = {})
+    li.b-menu__item
+        a(class='b-menu__link' href= config.href) #{config.text}

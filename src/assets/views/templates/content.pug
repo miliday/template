@@ -1,0 +1,16 @@
+//- +content({sidebar: 0/1/2})
+//-     block
+
+mixin content(config = {})
+
+    if config.sidebar == 0         
+        .b-content.b-main__content
+            block
+
+    if config.sidebar == 1
+        .b-content.b-content_sidebarOne.b-main__content
+            block
+
+    if config.sidebar == 2
+        .b-content.b-content_sidebarTwo.b-main__content
+            block

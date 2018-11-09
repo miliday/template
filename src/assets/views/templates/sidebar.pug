@@ -1,0 +1,20 @@
+//- +sidebar()
+//-     block
+
+//- +sidebarItem({title: ''})
+//-     block
+
+mixin sidebar()
+
+    aside.b-sidebar.b-main__sidebar
+        ul.b-sidebar__items
+            block
+
+mixin sidebarItem(config = {})
+
+    li.b-sidebar__item
+        .b-sidebar__item-header
+            h3.b-sidebar__item-title= config.title
+
+        .b-sidebar__item-main
+            block

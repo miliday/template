@@ -4,10 +4,8 @@
     ---------------------------------------------------------------
     nickname: Michael Holiday
     organization: "Totonis.com"
-    date: 18.06.2018
+    date: 07.11.2018
     email: mr.michael.holiday@gmail.com
-    ---------------------------------------------------------------
-    parting words: "Not everything is gold that glitters"
     ---------------------------------------------------------------
 */
 
@@ -20,31 +18,23 @@
 
 html {
     font-size: $parentRem;
-
-    @include lg-block() {
-        font-size: $parentRemLg;
-    }
-
-    @include md-block() {
-        font-size: $parentRemMd;
-    }
-
-    @include sm-block() {
-        font-size: $parentRemSm;
-    }
-
-    @include xs-block() {
-        font-size: $parentRemXs;
-    }
+    @include lg(font-size, $parentRemLg);
+    @include md(font-size, $parentRemMd);
+    @include sm(font-size, $parentRemSm);
+    @include xs(font-size, $parentRemXs);
 }
 
 body {
     position: relative;
 }
 
-div {}
+div {
+    display: block;
+}
 
-span {}
+span {
+    display: inline-block;
+}
 
 img {
     display: inline-block;
@@ -55,9 +45,13 @@ img {
 a {
     display: inline-block;
     text-decoration: none;
+    cursor: pointer;
 }
 
-button {}
+button {
+    outline: none;    
+    cursor: pointer;    
+}
 
 select {}
 
@@ -75,7 +69,10 @@ input[type="checkbox"] {}
 input[type="radio"] {}
 
 input[type="submit"],
-input[type="button"] {}
+input[type="button"] {
+    outline: none;
+    cursor: pointer;
+}
 
 // Lists
 ul,
@@ -131,9 +128,8 @@ p {
 
 h1 {
     display: block;
-    font-family: "Roboto", sans-serif;
+    font-family: $firstFont;
     color: $darkColor;
-    text-align: left;
     font-size: rem(60px);
     font-weight: 700;
     font-style: normal;
@@ -144,9 +140,8 @@ h1 {
 
 h2 {
     display: block;
-    font-family: "Roboto", sans-serif;
+    font-family: $firstFont;
     color: $darkColor;
-    text-align: left;
     font-size: rem(52px);
     font-weight: 700;
     font-style: normal;
@@ -157,9 +152,8 @@ h2 {
 
 h3 {
     display: block;
-    font-family: "Roboto", sans-serif;
+    font-family: $firstFont;
     color: $darkColor;
-    text-align: left;
     font-size: rem(44px);
     font-weight: 700;
     font-style: normal;
@@ -170,9 +164,8 @@ h3 {
 
 h4 {
     display: block;
-    font-family: "Roboto", sans-serif;
+    font-family: $firstFont;
     color: $darkColor;
-    text-align: left;
     font-size: rem(36px);
     font-weight: 700;
     font-style: normal;
@@ -183,9 +176,8 @@ h4 {
 
 h5 {
     display: block;
-    font-family: "Roboto", sans-serif;
+    font-family: $firstFont;
     color: $darkColor;
-    text-align: left;
     font-size: rem(28px);
     font-weight: 700;
     font-style: normal;
@@ -196,9 +188,8 @@ h5 {
 
 h6 {
     display: block;
-    font-family: "Roboto", sans-serif;
+    font-family: $firstFont;
     color: $darkColor;
-    text-align: left;
     font-size: rem(20px);
     font-weight: 700;
     font-style: normal;
@@ -209,26 +200,24 @@ h6 {
 
 p {
     display: block;
-    font-family: 'Open Sans', sans-serif;
+    font-family: $secondFont;
     color: $darkColor;
-    text-align: left;
     font-size: rem(18px);
     font-weight: 400;
     font-style: normal;
-    line-height: 1.4;
+    line-height: 1.6;
     text-decoration: none;
     text-transform: none;
 }
 
 blockquote {
     display: block;
-    font-family: 'Open Sans', sans-serif;
+    font-family: $secondFont;
     color: $darkColor;
-    text-align: left;
     font-size: rem(18px);
     font-weight: 400;
     font-style: normal;
-    line-height: 1.4;
+    line-height: 1.6;
     text-decoration: none;
     text-transform: none;
     background-color: rgba(0, 0, 0, 0.2);

@@ -1,0 +1,60 @@
+//- Service
+extends ../layout.pug
+
+append config
+    - const headerDesk = true;
+    - const headerMob = true;
+    - const sidebarLeft = true;
+    - const sidebarRight = true;
+    - const footerDesk = true;
+    - const footerMob = true;
+
+//- Head
+append styleVendor
+append styleInline
+
+//- Header
+append headerDesk
+    +logo({class: 'b-header-desk__logo', href: 'index.html', src: './assets/img/logo.jpg', alt: 'logo'})
+
+    +menu({class: 'b-header-desk__menu'})
+        +menuItem({href: '#', text: 'link'})
+        +menuItem({href: '#', text: 'link'})
+        +menuItem({href: '#', text: 'link'})
+        +menuItem({href: '#', text: 'link'})
+
+
+append headerMob
+    p headerMob
+
+//- Main
+append content
+    +example()
+        append header
+            h2 example title
+
+        append main
+            p example text
+
+append sidebarLeft
+    +sidebarItem({title: 'example title sidebarLeft'})
+        p sidebarLeft
+
+append sidebarRight
+    +sidebarItem({title: 'example title sidebarRight'})
+        p sidebarRight
+
+//- Footer
+append footerDesk
+    p footerDesk
+
+append footerMob
+    p footerMob
+
+//- Scripts
+append scriptVendor
+    +incScript('./assets/lib/jquery-3.3.1.min.js')
+
+append scriptInit
+    script.
+        console.log('123')

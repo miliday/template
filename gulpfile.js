@@ -13,69 +13,68 @@
     **************************************************
 */
 
-var gulp			= require('gulp'),
-	browserSync		= require('browser-sync'),
-	autoprefixer	= require('gulp-autoprefixer'),
-	csso			= require('gulp-csso'),
-	rename			= require('gulp-rename'),
-	imgmin			= require('gulp-imagemin'),
-	pngquant		= require('imagemin-pngquant'),
-	sass			= require('gulp-sass'),
-	sourcemaps		= require('gulp-sourcemaps'),
-	uglify			= require('gulp-uglify'),	
-	babel			= require('gulp-babel'),
-	htmlmin			= require('gulp-htmlmin'),
-    mediaGroup		= require('gulp-group-css-media-queries'),
-    concat          = require('gulp-concat'),
-    clean           = require('gulp-clean'),
-	reload			= browserSync.reload;
+var gulp = require('gulp'),
+    browserSync = require('browser-sync'),
+    autoprefixer = require('gulp-autoprefixer'),
+    csso = require('gulp-csso'),
+    rename = require('gulp-rename'),
+    imgmin = require('gulp-imagemin'),
+    pngquant = require('imagemin-pngquant'),
+    sass = require('gulp-sass'),
+    sourcemaps = require('gulp-sourcemaps'),
+    uglify = require('gulp-uglify'),
+    babel = require('gulp-babel'),
+    htmlmin = require('gulp-htmlmin'),
+    mediaGroup = require('gulp-group-css-media-queries'),
+    concat = require('gulp-concat'),
+    clean = require('gulp-clean'),
+    pug = require('gulp-pug');
+reload = browserSync.reload;
 
 var serverConfig = {
     server: {
-        baseDir: "src" 								// The root folder for the server
+        baseDir: "src" // The root folder for the server
     },
     ui: {
-    	port: 	3001 								// Your port, for server settings
+        port: 3001 // Your port, for server settings
     },
-    notify: 	false, 								// Сancel page update notifications
-    port: 		3000, 								// Your port on the server
-    ghostMode: 	false,								// Disable guest tracking
-    logPrefix: 	"Name Project",
-    host:       "localhost",
-    tunnel: 	"totonis-server",  					// Your developer name
-    open: 		"local"   						// Opens a server(local, tunnel, external)
+    notify: false, // Сancel page update notifications
+    port: 3000, // Your port on the server
+    ghostMode: false, // Disable guest tracking
+    logPrefix: "Name Project",
+    host: "localhost",
+    tunnel: "totonis-server", // Your developer name
+    open: "local" // Opens a server(local, tunnel, external)
 };
 
 var path = {
-	dist:{
-		html: 	'dist/',
-        css: 	'dist/assets/css/',
-        js: 	'dist/assets/js/',
-        img: 	'dist/assets/img/',
-        fonts: 	'dist/assets/font/',
-        lib:    'dist/assets/lib/'
-	},
-	src:{
-		html: 	'src/*.html',
-		css: 	'src/assets/css/main.css',
-		scss: 	'src/assets/scss/main.scss',
-		js: 	'src/assets/js/main.js',
-		img: 	'src/assets/img/**/*.*',
-		fonts: 	'src/assets/font/**/*.*',
-        lib:    [
-                'src/assets/lib/**/*.css',
-                'src/assets/lib/**/*.js'
-            ]
-	},
-	watch:{
-		html: 	'src/*.html',
-		scss: 	'src/assets/scss/main.scss',
-		js: 	'src/assets/js/*.js'
+    dist: {
+        html: 'dist/',
+        css: 'dist/assets/css/',
+        js: 'dist/assets/js/',
+        img: 'dist/assets/img/',
+        fonts: 'dist/assets/font/',
+        lib: 'dist/assets/lib/'
+    },
+    src: {
+        html: 'src/*.html',
+        views: 'src/*.pug',
+        css: 'src/assets/css/main.css',
+        scss: 'src/assets/scss/main.scss',
+        js: 'src/assets/js/main.js',
+        img: 'src/assets/img/**/*.*',
+        fonts: 'src/assets/font/**/*.*',
+        lib: [
+            'src/assets/lib/**/*.css',
+            'src/assets/lib/**/*.js'
+        ]
+    },
+    watch: {
+        views: 'src/assets/views/pages/*.pug',
+        scss: 'src/assets/scss/*.scss',
+        js: 'src/assets/js/*.js'
     }
 }
-
-
-
 
 
 // **********  Clean dist repository  **********
@@ -91,48 +90,50 @@ gulp.task('rm-dist', function () {
 
 // **********  Tasks for build project  **********
 
-gulp.task('build-html', function() {
-    gulp.src(path.src.html) 
+gulp.task('build-html', function () {
+    gulp.src(path.src.html)
         // .pipe(htmlmin({collapseWhitespace: true}))	// Minification html  // Uncomment if you need compressed HTML
         .pipe(gulp.dest(path.dist.html))
 });
 
-gulp.task('build-js', function() {
-    gulp.src(path.src.js) 							// Initialize sourcemap
-        .pipe(babel({                               // Change to prev version
+gulp.task('build-js', function () {
+    gulp.src(path.src.js) // Initialize sourcemap
+        .pipe(babel({ // Change to prev version
             presets: ['env']
-        })) 
-        .pipe(uglify()) 		
+        }))
+        .pipe(uglify())
         .pipe(gulp.dest(path.dist.js))
 });
 
-gulp.task('build-css', function() {
-    gulp.src(path.src.css) 
-        .pipe(mediaGroup())							// Collect media queris together
-        .pipe(autoprefixer()) 						// Add lib prefixes
-        .pipe(csso()) 								// Compretion css
+gulp.task('build-css', function () {
+    gulp.src(path.src.css)
+        .pipe(mediaGroup()) // Collect media queris together
+        .pipe(autoprefixer()) // Add lib prefixes
+        .pipe(csso()) // Compretion css
         .pipe(gulp.dest(path.dist.css))
 });
 
-gulp.task('build-img', function() {
-    gulp.src(path.src.img) 
-        .pipe(imgmin({ 								// Compretion image
+gulp.task('build-img', function () {
+    gulp.src(path.src.img)
+        .pipe(imgmin({ // Compretion image
             progressive: true,
-            svgoPlugins: [{removeViewBox: false}],
+            svgoPlugins: [{
+                removeViewBox: false
+            }],
             use: [pngquant()],
             interlaced: true
         }))
         .pipe(gulp.dest(path.dist.img))
 });
 
-gulp.task('build-fonts', function() {
+gulp.task('build-fonts', function () {
     gulp.src(path.src.fonts)
         .pipe(gulp.dest(path.dist.fonts))
 });
 
-gulp.task('build-lib', function(){
-	gulp.src(path.src.lib)
-	.pipe(gulp.dest(path.dist.lib))
+gulp.task('build-lib', function () {
+    gulp.src(path.src.lib)
+        .pipe(gulp.dest(path.dist.lib))
 })
 
 
@@ -147,7 +148,7 @@ gulp.task('build', ['build-html', 'build-js', 'build-css', 'build-img', 'build-f
 
 // ********** Localhost task **********
 
-gulp.task('webserver', function() {
+gulp.task('webserver', function () {
     browserSync(serverConfig);
 });
 
@@ -156,41 +157,51 @@ gulp.task('webserver', function() {
 
 // ********** Clean js for watcher **********
 
-gulp.task('clean-js', function() {
+gulp.task('clean-js', function () {
     return gulp.src(['src/assets/js/main.js', 'src/assets/js/main.js.map'])
-    .pipe(clean())
+        .pipe(clean())
 })
 
 
 
 // **********  Watch task + reload  **********
 
-gulp.task('js-r', ['clean-js'], function(){
+gulp.task('js-r', ['clean-js'], function () {
     return gulp.src('src/assets/js/**/*')
-    .pipe(sourcemaps.init())
-    .pipe(concat('main.js'))
-    .pipe(sourcemaps.write('', {
-        sourceMappingURLPrefix: ''
-    }))
-    .pipe(gulp.dest('./src/assets/js/'))
-    .pipe(browserSync.reload({stream: true}));
+        .pipe(sourcemaps.init())
+        .pipe(concat('main.js'))
+        .pipe(sourcemaps.write('', {
+            sourceMappingURLPrefix: ''
+        }))
+        .pipe(gulp.dest('./src/assets/js/'))
+        .pipe(browserSync.reload({
+            stream: true
+        }));
 })
 
-gulp.task('sass-r', function(){
+gulp.task('sass-r', function () {
     return gulp.src(path.src.scss)
-    .pipe(sourcemaps.init())
-    .pipe(sass().on('error', sass.logError))	// Сompile scss to css
-    .pipe(sourcemaps.write('', {
-        sourceMappingURLPrefix: ''
-    }))
-    .pipe(gulp.dest('./src/assets/css/'))
-    .pipe(browserSync.reload({stream: true}));
+        .pipe(sourcemaps.init())
+        .pipe(sass().on('error', sass.logError)) // Сompile scss to css
+        .pipe(sourcemaps.write('', {
+            sourceMappingURLPrefix: ''
+        }))
+        .pipe(gulp.dest('./src/assets/css/'))
+        .pipe(browserSync.reload({
+            stream: true
+        }));
 });
 
-gulp.task('watch-r', ['webserver', 'sass-r', 'js-r'], function() {
+gulp.task('pug-r', function buildHTML() {
+    return gulp.src('src/assets/views/pages/*.pug')
+        .pipe(pug({pretty: true}))
+        .pipe(gulp.dest('./src/'))
+});
+
+gulp.task('watch-r', ['webserver', 'sass-r', 'js-r'], function () {
+    gulp.watch(path.watch.views, ['pug-r']);
     gulp.watch(path.watch.scss, ['sass-r']);
-	gulp.watch(path.watch.html, reload);
-	gulp.watch(path.watch.js, ['js-r']);
+    gulp.watch(path.watch.js, ['js-r']);
 });
 
 
@@ -198,27 +209,34 @@ gulp.task('watch-r', ['webserver', 'sass-r', 'js-r'], function() {
 
 // **********  Watch task  **********
 
-gulp.task('js', ['clean-js'], function(){
+gulp.task('js', ['clean-js'], function () {
     return gulp.src('src/assets/js/**/*')
-    .pipe(sourcemaps.init())
-    .pipe(concat('main.js'))
-    .pipe(sourcemaps.write('', {
-        sourceMappingURLPrefix: ''
-    }))
-    .pipe(gulp.dest('./src/assets/js/'))
+        .pipe(sourcemaps.init())
+        .pipe(concat('main.js'))
+        .pipe(sourcemaps.write('', {
+            sourceMappingURLPrefix: ''
+        }))
+        .pipe(gulp.dest('./src/assets/js/'))
 })
 
-gulp.task('sass', function(){
-    return gulp.src(path.src.scss)
-    .pipe(sourcemaps.init())
-    .pipe(sass().on('error', sass.logError))	// Сompile scss to css
-    .pipe(sourcemaps.write('', {
-        sourceMappingURLPrefix: ''
-    }))
-    .pipe(gulp.dest('./src/assets/css/'))
+gulp.task('pug', function buildHTML() {
+    return gulp.src('src/assets/views/pages/*.pug')
+        .pipe(pug({pretty: true}))
+        .pipe(gulp.dest('./src/'))
 });
 
-gulp.task('watch', ['webserver', 'sass', 'js'], function() {
+gulp.task('sass', function () {
+    return gulp.src(path.src.scss)
+        .pipe(sourcemaps.init())
+        .pipe(sass().on('error', sass.logError)) // Сompile scss to css
+        .pipe(sourcemaps.write('', {
+            sourceMappingURLPrefix: ''
+        }))
+        .pipe(gulp.dest('./src/assets/css/'))
+});
+
+gulp.task('watch', ['webserver', 'sass', 'js'], function () {
+    gulp.watch(path.watch.views, ['pug']);
     gulp.watch(path.watch.scss, ['sass']);
     gulp.watch(path.watch.js, ['js']);
 });
