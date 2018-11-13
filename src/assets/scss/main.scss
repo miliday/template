@@ -1,0 +1,41 @@
+/*
+    ---------------------------------------------------------------
+    Startup template creator - "Made with love, especially for you"
+    ---------------------------------------------------------------
+    nickname: Michael Holiday
+    organization: "Totonis.com"
+    date: 07.11.2018
+    email: mr.michael.holiday@gmail.com
+    ---------------------------------------------------------------
+*/
+
+/* Main */
+@import "./smartGrid.scss";
+@import "./normalize.scss";
+@import "./variables.scss";
+@import "./functions.scss";
+@import "./mixins.scss";
+@import "./general.scss";
+@import "./fonts.scss";
+
+/* Components */
+@import "./components/mainMenu.scss";
+@import "./components/logo.scss";
+
+/* Sections */
+@import "./sections/example.scss";
+
+/* Template */
+@import "./template/headerMob.scss";
+@import "./template/headerDesk.scss";
+@import "./template/headerPage.scss";
+
+@import "./template/sidebarMain.scss";
+@import "./template/contentMain.scss";
+@import "./template/mainPage.scss";
+
+@import "./template/footerMob.scss";
+@import "./template/footerDesk.scss";
+@import "./template/footerPage.scss";
+
+@import "./template/page.scss";

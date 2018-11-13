@@ -1,0 +1,96 @@
+//- Service
+
+include ./includes.pug
+
+mixin incStyle(href)
+    link(rel="stylesheet", href= href)
+
+mixin incScript(src)
+    script(src= src)
+
+block configPage
+block configСomponents
+
+
+//- Logic
+
+if !sidebarMainLeft && !sidebarMainRight
+    - contentMainConfig.sidebar = 0
+
+if sidebarMainLeft && !sidebarMainRight
+    - contentMainConfig.sidebar = 1
+
+if !sidebarMainLeft && sidebarMainRight
+    - contentMainConfig.sidebar = 1
+
+if sidebarMainLeft && sidebarMainRight
+    - contentMainConfig.sidebar = 2
+
+
+//- Main
+
+doctype html
+head
+
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <link rel="icon" href="./assets/img/favicon.ico" type="image/x-icon"/>
+    
+    block styleVendor
+
+    +incStyle('./assets/css/main.css')
+
+    block styleInline
+
+body
+
+    +page(pageConfig)
+
+        +headerPage(headerPageConfig)
+            block headerPage
+
+            if headerDesk
+                +headerDesk(headerDeskConfig)
+                    block headerDesk
+            
+            if headerMob
+                +headerMob(headerMobConfig)
+                    block headerMob
+
+        +mainPage(mainPageConfig)
+            block mainPage
+
+            if sidebarMainLeft
+                +sidebarMain(sidebarLeftConfig)
+                    block sidebarMainLeft
+
+            if contentMain
+                +contentMain(contentMainConfig)
+                    block contentMain
+
+            if sidebarMainRight
+                +sidebarMain(sidebarRightConfig)
+                    block sidebarMainRight
+
+        +footerPage(footerPageConfig)
+            block footerPage
+
+            if footerDesk
+                +footerDesk(footerDeskConfig)
+                    block footerDesk
+
+            if footerMob 
+                +footerMob(footerMobConfig)
+                    block footerMob
+
+
+    //- Scripts
+
+    +incScript('./assets/lib/jquery-3.3.1.min.js')
+
+    block scriptVendor
+
+    +incScript('./assets/js/main.js')
+    
+    block scriptInit

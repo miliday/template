@@ -1,0 +1,8 @@
+//- +headerMob({modBlock, modElem})
+//-     block
+
+mixin headerMob(config = {})
+
+    div(class=['b-header-mob', config.modBlock, 'b-header__mob', config.modElem])
+        .b-header-mob__inner
+            block

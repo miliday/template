@@ -1,0 +1,14 @@
+/*
+    ---------------------------------------------------------------
+    Startup template creator - "Made with love, especially for you"
+    ---------------------------------------------------------------
+    nickname: Michael Holiday
+    organization: "Totonis.com"
+    date: 07.11.2018
+    email: mr.michael.holiday$gmail.com
+    ---------------------------------------------------------------
+*/
+
+@function rem($pixels) {
+    @return ($pixels / $parentRem) * 1rem;
+}

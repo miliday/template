@@ -1,0 +1,8 @@
+.b-content-main {
+    display: flex;
+    flex-direction: column;
+}
+
+.b-content-main__example {
+    @include wrapper();
+}

@@ -1,0 +1,18 @@
+/*
+    ---------------------------------------------------------------
+    Startup template creator - "Made with love, especially for you"
+    ---------------------------------------------------------------
+    nickname: Michael Holiday
+    organization: "Totonis.com"
+    date: 07.11.2018
+    email: mr.michael.holiday@gmail.com
+    ---------------------------------------------------------------
+*/
+
+.b-footer {
+    position: relative;
+}
+
+.b-footer__inner {
+    @include wrapper();
+}

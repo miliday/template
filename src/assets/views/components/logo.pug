@@ -1,0 +1,7 @@
+//- +logo({class: '', href: '', src: '', alt: ''})
+
+mixin logo(config = {})
+
+    div(class=['b-logo', config.class])
+        a(href= config.href)
+            img(class="b-logo__img", src= config.src, alt= config.alt)
