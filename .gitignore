@@ -1,10 +1,5 @@
-/node_modules
 /.vscode
 /.idea
-*.code-workspace
 /dist
-/src/*.html
-/src/assets/css
-/src/assets/js/main.js
-/src/assets/js/main.js.map
+/node_modules
 package-lock.json
