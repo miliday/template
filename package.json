@@ -1,0 +1,27 @@
+{
+  "name": "miliday",
+  "version": "2.0.0",
+  "description": "miliday starter markup template",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miliday/template.git"
+  },
+  "author": "Michael Holiday",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/miliday/template/issues"
+  },
+  "homepage": "https://github.com/miliday/template#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-image": "^4.3.0",
+    "gulp-pug": "^4.0.1",
+    "gulp-sass": "^4.0.2",
+    "node-sass": "^4.10.0"
+  },
+  "dependencies": {}
+}
