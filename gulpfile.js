@@ -1,211 +1,112 @@
-const   gulp			= require('gulp'),
-	    browserSync		= require('browser-sync'),
-	    autoprefixer	= require('gulp-autoprefixer'),
-	    csso			= require('gulp-csso'),
-	    rename			= require('gulp-rename'),
-	    imgmin			= require('gulp-imagemin'),
-	    pngquant		= require('imagemin-pngquant'),
-	    sass			= require('gulp-sass'),
-	    sourcemaps		= require('gulp-sourcemaps'),
-	    uglify			= require('gulp-uglify'),
-        babel			= require('gulp-babel'),
-	    htmlmin			= require('gulp-htmlmin'),
-        mediaGroup		= require('gulp-group-css-media-queries'),
-        concat          = require('gulp-concat'),
-        clean           = require('gulp-clean'),
-	    reload			= browserSync.reload;
+// requires
+const gulp = require('gulp');
+const browserSync = require('browser-sync');
+const autoprefixer = require('gulp-autoprefixer');
+const csso = require('gulp-csso');
+const imagemin = require('gulp-imagemin');
+const sass = require('gulp-sass');
+const sourcemaps = require('gulp-sourcemaps');
+const uglify = require('gulp-uglify');
+const babel = require('gulp-babel');
+const htmlmin = require('gulp-htmlmin');
+const mediaGroup = require('gulp-group-css-media-queries');
+const concat = require('gulp-concat');
+const clean = require('gulp-clean');
 
-var serverConfig = {
+// configs
+const gulpConfig = {
+    reload: true,
+    sourcemaps: true
+}
+
+const serverConfig = {
     server: {
         baseDir: "dist"
     },
     ui: {
-    	port: 	8088
+        port: 8088
     },
-    notify: 	false,
-    port: 		8080,
-    ghostMode: 	false,
-    logPrefix: 	"miliday",
-    host:       "localhost",
-    tunnel: 	"miliday-tunnel",
-    open: 		"local"
+    notify: false,
+    port: 8080,
+    ghostMode: false,
+    logPrefix: "miliday",
+    host: "localhost",
+    tunnel: "miliday-tunnel",
+    open: "local"
 };
 
-var path = {
-	dist:{
-		html: 	'dist/',
-        css: 	'dist/assets/css/',
-        js: 	'dist/assets/js/',
-        img: 	'dist/assets/img/',
-        fonts: 	'dist/assets/font/',
-        video: 	'dist/assets/video/',
-        lib:    'dist/assets/lib/'
-	},
-	src:{
-		html: 	'src/*.html',
-		css: 	'src/assets/css/main.css',
-		scss: 	'src/assets/scss/main.scss',
-		js: 	'src/assets/js/main.js',
-		img: 	'src/assets/img/**/*.*',
-		fonts: 	'src/assets/font/**/*.*',
-		video: 	'src/assets/video/**/*.*',
-        lib:    [
-                'src/assets/lib/**/*.css',
-                'src/assets/lib/**/*.js'
-            ]
-	},
-	watch:{
-		html: 	'src/*.html',
-		scss: 	'src/assets/scss/**/*.scss',
-		js: 	'src/assets/js/**/*.js'
-    }
-}
+// pathss
+let paths = {src: {}, dest: {}};
 
+// pathss src
+paths.src.root = './src';
+paths.src.assets = paths.src.root + '/assets';
 
+paths.src.pug = {root: '',all: '', compile: ''};
+paths.src.pug.root = paths.src.assets + '/views';
+paths.src.pug.all = paths.src.pug.root + '/**/*.pug';
+paths.src.pug.compile = paths.src.pug.root + '/pages/**/*.pug';
 
+paths.src.scss = {root: '', all: '', ignore: ''};
+paths.src.scss.root = paths.src.assets + '/{scss,sass}';
+paths.src.scss.all = paths.src.scss.root + '/**/*.{sass,scss}';
+paths.src.scss.ignore = '!' + paths.src.scss.root + '/**/_*.{sass,scss}';
 
+paths.src.js = {root: '', all: '', ignore: ''};
+paths.src.js.root = paths.src.assets + '/js',
+paths.src.js.all = paths.src.js.root + '/**/*.js',
+paths.src.js.ignore = '!' + paths.src.js.root + '/**/_*.js'
 
-// **********  Clean dist repository  **********
+paths.src.imgs = {gif: '', svg: '', png: '', jpg: '', jpeg: ''}
+paths.src.imgs.gif = paths.src.assets + '/**/*.gif',
+paths.src.imgs.svg = paths.src.assets + '/**/*.svg',
+paths.src.imgs.png = paths.src.assets + '/**/*.png',
+paths.src.imgs.jpg = paths.src.assets + '/**/*.jpg',
+paths.src.imgs.jpeg = paths.src.assets + '/**/*.jpeg'
 
-gulp.task('rm-dist', function () {
-    return gulp.src('dist')
-        .pipe(clean())
-});
+paths.src.exceptions = [
+    '!' + paths.src.pug.all,
+    '!' + paths.src.scss.all,
+    '!' + paths.src.js.all,
+    '!' + paths.src.imgs.gif,
+    '!' + paths.src.imgs.svg,
+    '!' + paths.src.imgs.jpg,
+    '!' + paths.src.imgs.jpeg
+];
+// all src files excluding processing
+// paths.src.axp = [paths.src.root + '/**/*', paths.src.exceptions];
 
+// pathss dest
+paths.dest.root = './dist';
+paths.dest.html = paths.dest.root;
+paths.dest.assets = paths.dest.root + '/assets';
+paths.dest.css = paths.dest.assets + '/css';
+paths.dest.js = paths.dest.assets + '/js';
 
+// // pathss watch
+// paths.watch.pug = paths.src.pug.all;
+// paths.watch.scss = paths.src.scss.all;
+// paths.watch.js = paths.src.js.all;
+// paths.watch.imgs = {
+//     gif: paths.src.imgs.gif,
+//     svg: paths.src.imgs.svg,
+//     png: paths.src.imgs.png,
+//     jpg: paths.src.imgs.jpg,
+//     jpeg: paths.src.imgs.jpeg
+// };
+// paths.watch.exceptions = [
+//     '!' + paths.watch.pug,
+//     '!' + paths.watch.scss,
+//     '!' + paths.watch.js,
+//     '!' + paths.watch.imgs.gif,
+//     '!' + paths.watch.imgs.svg,
+//     '!' + paths.watch.imgs.jpg,
+//     '!' + paths.watch.imgs.jpeg
+// ]
+// // all excluding processing
+// paths.watch.axp = [paths.src.assets + '/**/*', paths.watch.exceptions];
 
-
-
-// **********  Tasks for build project  **********
-
-gulp.task('build-html', function() {
-    gulp.src(path.src.html) 
-        // .pipe(htmlmin({collapseWhitespace: true}))	// Minification html  // Uncomment if you need compressed HTML
-        .pipe(gulp.dest(path.dist.html))
-});
-
-gulp.task('build-js', function() {
-    gulp.src(path.src.js) 							// Initialize sourcemap
-        .pipe(babel({                               // Change to prev version
-            presets: ['env']
-        })) 
-        .pipe(uglify()) 		
-        .pipe(gulp.dest(path.dist.js))
-});
-
-gulp.task('build-css', function() {
-    gulp.src(path.src.css) 
-        .pipe(mediaGroup())							// Collect media queris together
-        .pipe(autoprefixer()) 						// Add lib prefixes
-        .pipe(csso()) 								// Compretion css
-        .pipe(gulp.dest(path.dist.css))
-});
-
-gulp.task('build-img', function() {
-    gulp.src(path.src.img) 
-        .pipe(imgmin({ 								// Compretion image
-            progressive: true,
-            svgoPlugins: [{removeViewBox: false}],
-            use: [pngquant()],
-            interlaced: true
-        }))
-        .pipe(gulp.dest(path.dist.img))
-});
-
-gulp.task('build-fonts', function() {
-    gulp.src(path.src.fonts)
-        .pipe(gulp.dest(path.dist.fonts))
-});
-
-gulp.task('build-lib', function(){
-	gulp.src(path.src.lib)
-	.pipe(gulp.dest(path.dist.lib))
-})
-
-
-
-
-// **********  Tasks for build all project  **********
-
-gulp.task('build', ['build-html', 'build-js', 'build-css', 'build-img', 'build-fonts', 'build-lib']);
-
-
-
-
-// ********** Localhost task **********
-
-gulp.task('webserver', function() {
-    browserSync(serverConfig);
-});
-
-
-
-
-// ********** Clean js for watcher **********
-
-gulp.task('clean-js', function() {
-    return gulp.src(['src/assets/js/main.js', 'src/assets/js/main.js.map'])
-    .pipe(clean())
-})
-
-
-
-// **********  Watch task + reload  **********
-
-gulp.task('js-r', ['clean-js'], function(){
-    return gulp.src(path.watch.js)
-    .pipe(sourcemaps.init())
-    .pipe(concat('main.js'))
-    .pipe(sourcemaps.write('', {
-        sourceMappingURLPrefix: ''
-    }))
-    .pipe(gulp.dest('./src/assets/js/'))
-    .pipe(browserSync.reload({stream: true}));
-})
-
-gulp.task('sass-r', function(){
-    return gulp.src(path.src.scss)
-    .pipe(sourcemaps.init())
-    .pipe(sass().on('error', sass.logError))	// Сompile scss to css
-    .pipe(sourcemaps.write('', {
-        sourceMappingURLPrefix: ''
-    }))
-    .pipe(gulp.dest('./src/assets/css/'))
-    .pipe(browserSync.reload({stream: true}));
-});
-
-gulp.task('watch-r', ['webserver', 'sass-r', 'js-r'], function() {
-    gulp.watch(path.watch.scss, ['sass-r']);
-	gulp.watch(path.watch.html, reload);
-	gulp.watch(path.watch.js, ['js-r']);
-});
-
-
-
-
-// **********  Watch task  **********
-
-gulp.task('js', ['clean-js'], function(){
-    return gulp.src(path.watch.js)
-    .pipe(sourcemaps.init())
-    .pipe(concat('main.js'))
-    .pipe(sourcemaps.write('', {
-        sourceMappingURLPrefix: ''
-    }))
-    .pipe(gulp.dest('./src/assets/js/'))
-})
-
-gulp.task('sass', function(){
-    return gulp.src(path.src.scss)
-    .pipe(sourcemaps.init())
-    .pipe(sass().on('error', sass.logError))	// Сompile scss to css
-    .pipe(sourcemaps.write('', {
-        sourceMappingURLPrefix: ''
-    }))
-    .pipe(gulp.dest('./src/assets/css/'))
-});
-
-gulp.task('watch', ['webserver', 'sass', 'js'], function() {
-    gulp.watch(path.watch.scss, ['sass']);
-    gulp.watch(path.watch.js, ['js']);
+// tasks
+gulp.task('default', function () {
+    console.log(paths)
 });
