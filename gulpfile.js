@@ -1,5 +1,5 @@
 // requires
-const gulp = require('gulp');
+const gulp = require('gulp-param')(require('gulp'), process.argv);
 const browserSync = require('browser-sync');
 const autoprefixer = require('gulp-autoprefixer');
 const csso = require('gulp-csso');
@@ -11,13 +11,11 @@ const babel = require('gulp-babel');
 const htmlmin = require('gulp-htmlmin');
 const mediaGroup = require('gulp-group-css-media-queries');
 const concat = require('gulp-concat');
+const pug = require('gulp-pug');
 const clean = require('gulp-clean');
 
 // configs
-const gulpConfig = {
-    reload: true,
-    sourcemaps: true
-}
+const modeSass = 'scss';
 
 const serverConfig = {
     server: {
@@ -36,77 +34,132 @@ const serverConfig = {
 };
 
 // pathss
-let paths = {src: {}, dest: {}};
+let paths = {
+    src: {},
+    dest: {}
+};
 
 // pathss src
 paths.src.root = './src';
 paths.src.assets = paths.src.root + '/assets';
 
-paths.src.pug = {root: '',all: '', compile: ''};
-paths.src.pug.root = paths.src.assets + '/views';
-paths.src.pug.all = paths.src.pug.root + '/**/*.pug';
-paths.src.pug.compile = paths.src.pug.root + '/pages/**/*.pug';
+paths.src.pug = {
+    all: '',
+    ignore: ''
+};
+paths.src.pug.all = paths.src.root + '/**/*.pug';
+paths.src.pug.ignore = paths.src.root + '/**/_*.pug';
 
-paths.src.scss = {root: '', all: '', ignore: ''};
-paths.src.scss.root = paths.src.assets + '/{scss,sass}';
-paths.src.scss.all = paths.src.scss.root + '/**/*.{sass,scss}';
-paths.src.scss.ignore = '!' + paths.src.scss.root + '/**/_*.{sass,scss}';
+paths.src.sass = {
+    all: '',
+    ignore: ''
+};
+paths.src.sass.all = paths.src.root + '/**/*.' + modeSass;
+paths.src.sass.ignore = '!' + paths.src.root + '/**/_*.' + modeSass;
 
-paths.src.js = {root: '', all: '', ignore: ''};
-paths.src.js.root = paths.src.assets + '/js',
-paths.src.js.all = paths.src.js.root + '/**/*.js',
-paths.src.js.ignore = '!' + paths.src.js.root + '/**/_*.js'
+paths.src.js = {
+    concat: '',
+    path: '',
+    root: '',
+    all: '',
+    ignore: ''
+};
+paths.src.js.concat = 'main.js';
+paths.src.js.path = '/assets/js';
+paths.src.js.root = paths.src.root + '/assets/js';
+paths.src.js.all = paths.src.js.root + '/**/*.js';
+paths.src.js.ignore = '!' + paths.src.js.root;
 
-paths.src.imgs = {gif: '', svg: '', png: '', jpg: '', jpeg: ''}
-paths.src.imgs.gif = paths.src.assets + '/**/*.gif',
-paths.src.imgs.svg = paths.src.assets + '/**/*.svg',
-paths.src.imgs.png = paths.src.assets + '/**/*.png',
-paths.src.imgs.jpg = paths.src.assets + '/**/*.jpg',
-paths.src.imgs.jpeg = paths.src.assets + '/**/*.jpeg'
+paths.src.imgs = {
+    gif: '',
+    svg: '',
+    png: '',
+    jpg: '',
+    jpeg: ''
+}
+paths.src.imgs.gif = paths.src.root + '/**/*.gif',
+    paths.src.imgs.svg = paths.src.root + '/**/*.svg',
+    paths.src.imgs.png = paths.src.root + '/**/*.png',
+    paths.src.imgs.jpg = paths.src.root + '/**/*.jpg',
+    paths.src.imgs.jpeg = paths.src.root + '/**/*.jpeg'
 
 paths.src.exceptions = [
     '!' + paths.src.pug.all,
-    '!' + paths.src.scss.all,
+    '!' + paths.src.sass.all,
     '!' + paths.src.js.all,
     '!' + paths.src.imgs.gif,
     '!' + paths.src.imgs.svg,
     '!' + paths.src.imgs.jpg,
     '!' + paths.src.imgs.jpeg
 ];
-// all src files excluding processing
-// paths.src.axp = [paths.src.root + '/**/*', paths.src.exceptions];
 
 // pathss dest
 paths.dest.root = './dist';
 paths.dest.html = paths.dest.root;
-paths.dest.assets = paths.dest.root + '/assets';
-paths.dest.css = paths.dest.assets + '/css';
-paths.dest.js = paths.dest.assets + '/js';
+paths.dest.css = paths.dest.root;
+paths.dest.js = paths.dest.root + paths.src.js.path;
 
-// // pathss watch
-// paths.watch.pug = paths.src.pug.all;
-// paths.watch.scss = paths.src.scss.all;
-// paths.watch.js = paths.src.js.all;
-// paths.watch.imgs = {
-//     gif: paths.src.imgs.gif,
-//     svg: paths.src.imgs.svg,
-//     png: paths.src.imgs.png,
-//     jpg: paths.src.imgs.jpg,
-//     jpeg: paths.src.imgs.jpeg
-// };
-// paths.watch.exceptions = [
-//     '!' + paths.watch.pug,
-//     '!' + paths.watch.scss,
-//     '!' + paths.watch.js,
-//     '!' + paths.watch.imgs.gif,
-//     '!' + paths.watch.imgs.svg,
-//     '!' + paths.watch.imgs.jpg,
-//     '!' + paths.watch.imgs.jpeg
-// ]
-// // all excluding processing
-// paths.watch.axp = [paths.src.assets + '/**/*', paths.watch.exceptions];
+// tasks global
 
-// tasks
-gulp.task('default', function () {
-    console.log(paths)
+gulp.task('clean', function () {
+    return gulp.src(paths.dest.root)
+        .pipe(clean())
+})
+
+gulp.task('clean-js', function () {
+    return gulp.src(paths.dest.js)
+        .pipe(clean())
+})
+
+gulp.task('webserver', function () {
+    browserSync(serverConfig);
+});
+
+// tasks watch
+gulp.task('default', ['webserver', 'sass-dev', 'js-dev']);
+
+gulp.task('watcher', function () {
+    gulp.watch(paths.src.sass.all, ['sass-dev']);
+    gulp.watch(paths.src.sass.all, ['js-dev']);
+});
+
+
+gulp.task('pug-dev', function () {
+    return gulp.src([paths.src.pug.all, paths.src.pug.ignore])
+        .pipe(pug({pretty: true}))
+        .pipe(gulp.dest(paths.dest.html))
+        .pipe(browserSync.reload({
+            stream: true
+        }));
+});
+
+gulp.task('sass-dev', function () {
+    return gulp.src([paths.src.sass.all, paths.src.sass.ignore])
+        .pipe(sourcemaps.init())
+        .pipe(sass().on('error', sass.logError))
+        .pipe(sourcemaps.write('', {
+            sourceMappingURLPrefix: ''
+        }))
+        .pipe(gulp.dest(paths.dest.css))
+        .pipe(browserSync.reload({
+            stream: true
+        }));
+});
+
+gulp.task('js-dev', function () {
+    return gulp.src(paths.src.js.all)
+        .pipe(sourcemaps.init())
+        .pipe(concat(paths.src.js.concat))
+        .pipe(sourcemaps.write('', {
+            sourceMappingURLPrefix: ''
+        }))
+        .pipe(gulp.dest(paths.dest.js))
+})
+
+// tasks build
+
+gulp.task('sass-build', function () {
+    return gulp.src([paths.src.sass.all, paths.src.sass.ignore])
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest(paths.dest.css));
 });
