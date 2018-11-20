@@ -4,7 +4,6 @@ extends ../layout.pug
 block configPage
     - const headerDesk          = true;
     - const headerMob           = true;
-    - const coverContent        = true;
     - const contentMain         = true;
     - const sidebarMainLeft     = false;
     - const sidebarMainRight    = false;
@@ -12,22 +11,28 @@ block configPage
     - const footerMob           = true;
 
 block configСomponents
-    - var pageConfig                = {};
-    - var headerPageConfig          = {absoluteLg: true, absoluteSm: false};
-    - var headerDeskConfig          = {stiky: false};
-    - var headerMobConfig           = {stiky: true};
-    - var sidebarMainLeftConfig     = {};
-    - var sidebarMainRightConfig    = {};
-    - var coverContent              = {};
-    - var contentMainConfig         = {};
-    - var mainPageConfig            = {};
-    - var footerPageConfig          = {};
-    - var footerDeskConfig          = {};
-    - var footerMobConfig           = {};
+    - var pageConfig              = {};
+    - var headerPageConfig        = {absoluteLg: true, absoluteSm: false};
+    - var headerDeskConfig        = {stiky: false};
+    - var headerMobConfig         = {stiky: true};
+    - var sidebarMainLeftConfig   = {};
+    - var sidebarMainRightConfig  = {};
+    - var contentMainConfig       = {};
+    - var mainPageConfig          = {};
+    - var footerPageConfig        = {};
+    - var footerDeskConfig        = {};
+    - var footerMobConfig         = {};
 
 //- Head
 block styleVendor
+block styleOwn
+    +incStyle('./assets/css/main.css')
+
 block styleInline
+    style.
+        body {
+            display: block;
+        }
 
 //- Header
 block headerPage
@@ -36,14 +41,14 @@ block headerMob
 
 //- Main
 block mainPage
+
+//- Content
 block contentMain
-    +exampleSection()
+    +coverMain()
 
+//- Sidebars
 block sidebarMainLeft
-    +sidebarMainItem({title: 'sidebarLeft title'})
-
 block sidebarMainRight
-    +sidebarMainItem({title: 'sidebarRight title'})
 
 //- Footer
 block footerPage
@@ -52,6 +57,11 @@ block footerMob
 
 //- Scripts
 block scriptVendor
+    +incScript('./assets/lib/jquery-3.3.1.min.js')
+
+block scriptOwn
+    +incScript('./assets/js/main.js')
+
 block scriptInit
     script.
         console.log('scriptInitExample')

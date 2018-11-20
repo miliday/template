@@ -3,7 +3,7 @@
 include ./includes.pug
 
 mixin incStyle(href)
-    link(rel="stylesheet", href= href)
+    link(rel= "stylesheet", href= href)
 
 mixin incScript(src)
     script(src= src)
@@ -38,9 +38,7 @@ head
     <link rel="icon" href="./assets/img/favicon.ico" type="image/x-icon"/>
     
     block styleVendor
-
-    +incStyle('./assets/css/main.css')
-
+    block styleOwn
     block styleInline
 
 body
@@ -66,7 +64,7 @@ body
                     block sidebarMainLeft
 
             if contentMain
-                +contentMain(contentMainConfig)
+                +contentMain(contentMainConfig)                    
                     block contentMain
 
             if sidebarMainRight
@@ -86,11 +84,6 @@ body
 
 
     //- Scripts
-
-    +incScript('./assets/lib/jquery-3.3.1.min.js')
-
-    block scriptVendor
-
-    +incScript('./assets/js/main.js')
-    
+    block scriptVendor    
+    block scriptOwn    
     block scriptInit
