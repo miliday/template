@@ -25,7 +25,7 @@ const clean = require('gulp-clean');
 const rename = require("gulp-rename");
 const smartgrid = require('smart-grid');
 const watch = require('gulp-watch');
-
+const bulkSass = require('gulp-sass-bulk-import');
 
 // smartgrid congig
 const smartgridCongig = {
@@ -252,6 +252,7 @@ gulp.task('pug-dev', function () {
 gulp.task('sass-dev', function () {
     return gulp.src([path.src.sass.all, path.src.sass.ignore])
         .pipe(sourcemaps.init())
+        .pipe(bulkSass())
         .pipe(sass().on('error', sass.logError))
         .pipe(sourcemaps.write('', {
             sourceMappingURLPrefix: ''
