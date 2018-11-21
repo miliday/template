@@ -44,7 +44,11 @@ block mainPage
 
 //- Content
 block contentMain
-    +coverMain()
+    section.b-example.b-content__example
+        .b-example__inner
+            img(class="b-example__img" src="./assets/img/tmp/rocket.png")
+            p.b-example__test test
+
 
 //- Sidebars
 block sidebarMainLeft
@@ -61,6 +65,7 @@ block scriptVendor
 
 block scriptOwn
     +incScript('./assets/js/main.js')
+    +incScript('./assets/js/test.js')
 
 block scriptInit
     script.

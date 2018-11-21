@@ -1,74 +1,64 @@
-/*
-    ---------------------------------------------------------------
-    Startup template creator - "Made with love, especially for you"
-    ---------------------------------------------------------------
-    nickname: Michael Holiday
+//
+    ----------------------------------------------------------------------
+    Starter markup template miliday - "Made with love, especially for you"
+    ----------------------------------------------------------------------
+    nickname: "Michael Holiday"
     organization: "Totonis.com"
-    date: 07.11.2018
-    email: mr.michael.holiday@gmail.com
-    ---------------------------------------------------------------
-*/
+    date: "21.11.2018"
+    email: "mr.michael.holiday@gmail.com"
+    ----------------------------------------------------------------------
 
 // Media
-@mixin media-max($break) {
-    @media screen and (max-width: #{$break}) {
-        @content;
-    }
-}
+=media-max($break) 
+    @media screen and (max-width: $break) 
+        @content
 
-@mixin media-min($break) {
-    @media screen and (min-width: #{$break}) {
-        @content;
-    }
-}
+
+=media-min($break) 
+    @media screen and (min-width: $break) 
+        @content
+
 
 // Typography
-@mixin text($color, $fontSize, $fontWeight, $lineHeight) {
-    color:  #{$color};
-    font-size: #{$fontSize};
-    font-weight: #{$fontWeight};
-    line-height: #{$lineHeight};
-}
+=text($color, $fontSize, $fontWeight, $lineHeight) 
+    color:  $color
+    font-size: $fontSize
+    font-weight: $fontWeight
+    line-height: $lineHeight
+
 
 // Interactive
-@mixin hover($property, $value, $speed, $function) {
-    transition: #{$property} #{$speed} #{$function};
-    &:hover {
-        #{$property}: #{$value};        
-    }
-}
+=hover($property, $value, $speed, $function) 
+    transition: $property $speed $function
+    &:hover 
+        $property: $value
 
-@mixin hover-block($speed, $function) {
-    transition: all #{$speed} #{$function};
-    &:hover {
-        @content;
-    }
-}
 
-@mixin focus($property, $value, $speed, $function) {
-    transition: #{$property} #{$speed} #{$function};
-    &:focus {
-        #{$property}: #{$value};        
-    }
-}
+=hover-block($speed, $function) 
+    transition: all $speed $function
+    &:hover 
+        @content
 
-@mixin focus-block($speed, $function) {
-    transition: all #{$speed} #{$function};
-    &:hover {
-        @content;
-    }
-}
 
-@mixin active($property, $value, $speed, $function) {
-    transition: #{$property} #{$speed} #{$function};
-    &:active {
-        #{$property}: #{$value};        
-    }
-}
+=focus($property, $value, $speed, $function) 
+    transition: $property $speed $function
+    &:focus 
+        $property: $value
 
-@mixin active-block($speed, $function) {
-    transition: all #{$speed} #{$function};
-    &:active {
-        @content;
-    }
-}
+
+=focus-block($speed, $function) 
+    transition: all $speed $function
+    &:hover 
+        @content
+
+
+=active($property, $value, $speed, $function) 
+    transition: $property $speed $function
+    &:active 
+        $property: $value
+
+    
+=active-block($speed, $function) 
+    transition: all $speed $function
+    &:active 
+        @content

@@ -1,224 +1,216 @@
-/*
-    ---------------------------------------------------------------
-    Startup template creator - "Made with love, especially for you"
-    ---------------------------------------------------------------
-    nickname: Michael Holiday
+//
+    ----------------------------------------------------------------------
+    Starter markup template miliday - "Made with love, especially for you"
+    ----------------------------------------------------------------------
+    nickname: "Michael Holiday"
     organization: "Totonis.com"
-    date: 07.11.2018
-    email: mr.michael.holiday@gmail.com
-    ---------------------------------------------------------------
-*/
+    date: "21.11.2018"
+    email: "mr.michael.holiday@gmail.com"
+    ----------------------------------------------------------------------
 
 // Document
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* 
+    margin: 0
+    padding: 0
+    box-sizing: border-box
 
-html {
-    font-size: $parentRem;
-    @include lg(font-size, $parentRemLg);
-    @include md(font-size, $parentRemMd);
-    @include sm(font-size, $parentRemSm);
-    @include xs(font-size, $parentRemXs);
-}
 
-body {
-    position: relative;
-}
+html 
+    font-size: $parentRem
+    +lg(font-size, $parentRemLg)
+    +md(font-size, $parentRemMd)
+    +sm(font-size, $parentRemSm)
+    +xs(font-size, $parentRemXs)
 
-div {
-    display: block;
-}
 
-span {
-    display: inline-block;
-}
+body 
+    position: relative
 
-img {
-    display: inline-block;
-    max-width: 100%;
-}
+
+div 
+    display: block
+
+
+span 
+    display: inline-block
+
+
+img 
+    display: inline-block
+    max-width: 100%
+
 
 // Interaction
-a {
-    display: inline-block;
-    text-decoration: none;
-    cursor: pointer;
-}
+a 
+    display: inline-block
+    text-decoration: none
+    cursor: pointer
 
-button {
-    outline: none;    
-    cursor: pointer;    
-}
 
-select {}
+button 
+    outline: none    
+    cursor: pointer    
+
+
+select 
 
 // Forms
-form {}
+form 
 
-input {}
+input 
 
-textarea {}
+textarea 
 
-output {}
+output 
 
-input[type="checkbox"] {}
+input[type="checkbox"] 
 
-input[type="radio"] {}
+input[type="radio"] 
 
 input[type="submit"],
-input[type="button"] {
-    outline: none;
-    cursor: pointer;
-}
+input[type="button"] 
+    outline: none
+    cursor: pointer
+
 
 // Lists
 ul,
 menu,
-dir {
-    display: block;
-    list-style-type: disc;
-    -webkit-margin-before: 0;
-    -webkit-margin-after: 0;
-    -webkit-margin-start: 0;
-    -webkit-margin-end: 0;
-    -webkit-padding-start: 0;
-}
+dir 
+    display: block
+    list-style-type: disc
+    -webkit-margin-before: 0
+    -webkit-margin-after: 0
+    -webkit-margin-start: 0
+    -webkit-margin-end: 0
+    -webkit-padding-start: 0
 
-ul {
-    list-style-type: none;
-}
 
-ol {}
+ul 
+    list-style-type: none
 
-li {
-    list-style: none;
-}
+
+ol 
+
+li 
+    list-style: none
+
 
 // Tables
-caption {}
+caption 
 
-table {}
+table 
 
-thead {}
+thead 
 
-tbody {}
+tbody 
 
-tr {}
+tr 
 
-th {}
+th 
 
-td {}
+td 
 
 // Typography
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-    -webkit-margin-before: 0;
-    -webkit-margin-after: 0;
-    -webkit-margin-start: 0;
-    -webkit-margin-end: 0;
-}
+h1, h2, h3, h4, h5, h6, p 
+    -webkit-margin-before: 0
+    -webkit-margin-after: 0
+    -webkit-margin-start: 0
+    -webkit-margin-end: 0
 
-h1 {
-    display: block;
-    font-family: $firstFont;
-    color: $darkColor;
-    font-size: rem(60px);
-    font-weight: 700;
-    font-style: normal;
-    line-height: 1.6;
-    text-decoration: none;
-    text-transform: none;
-}
 
-h2 {
-    display: block;
-    font-family: $firstFont;
-    color: $darkColor;
-    font-size: rem(52px);
-    font-weight: 700;
-    font-style: normal;
-    line-height: 1.6;
-    text-decoration: none;
-    text-transform: none;
-}
+h1 
+    display: block
+    font-family: $firstFont
+    color: $darkColor
+    font-size: rem(60px)
+    font-weight: 700
+    font-style: normal
+    line-height: 1.6
+    text-decoration: none
+    text-transform: none
 
-h3 {
-    display: block;
-    font-family: $firstFont;
-    color: $darkColor;
-    font-size: rem(44px);
-    font-weight: 700;
-    font-style: normal;
-    line-height: 1.6;
-    text-decoration: none;
-    text-transform: none;
-}
 
-h4 {
-    display: block;
-    font-family: $firstFont;
-    color: $darkColor;
-    font-size: rem(36px);
-    font-weight: 700;
-    font-style: normal;
-    line-height: 1.6;
-    text-decoration: none;
-    text-transform: none;
-}
+h2 
+    display: block
+    font-family: $firstFont
+    color: $darkColor
+    font-size: rem(52px)
+    font-weight: 700
+    font-style: normal
+    line-height: 1.6
+    text-decoration: none
+    text-transform: none
 
-h5 {
-    display: block;
-    font-family: $firstFont;
-    color: $darkColor;
-    font-size: rem(28px);
-    font-weight: 700;
-    font-style: normal;
-    line-height: 1.6;
-    text-decoration: none;
-    text-transform: none;
-}
 
-h6 {
-    display: block;
-    font-family: $firstFont;
-    color: $darkColor;
-    font-size: rem(20px);
-    font-weight: 700;
-    font-style: normal;
-    line-height: 1.6;
-    text-decoration: none;
-    text-transform: none;
-}
+h3 
+    display: block
+    font-family: $firstFont
+    color: $darkColor
+    font-size: rem(44px)
+    font-weight: 700
+    font-style: normal
+    line-height: 1.6
+    text-decoration: none
+    text-transform: none
 
-p {
-    display: block;
-    font-family: $secondFont;
-    color: $darkColor;
-    font-size: rem(18px);
-    font-weight: 400;
-    font-style: normal;
-    line-height: 1.6;
-    text-decoration: none;
-    text-transform: none;
-}
 
-blockquote {
-    display: block;
-    font-family: $secondFont;
-    color: $darkColor;
-    font-size: rem(18px);
-    font-weight: 400;
-    font-style: normal;
-    line-height: 1.6;
-    text-decoration: none;
-    text-transform: none;
-    background-color: rgba(0, 0, 0, 0.2);
-}
+h4 
+    display: block
+    font-family: $firstFont
+    color: $darkColor
+    font-size: rem(36px)
+    font-weight: 700
+    font-style: normal
+    line-height: 1.6
+    text-decoration: none
+    text-transform: none
+
+
+h5 
+    display: block
+    font-family: $firstFont
+    color: $darkColor
+    font-size: rem(28px)
+    font-weight: 700
+    font-style: normal
+    line-height: 1.6
+    text-decoration: none
+    text-transform: none
+
+
+h6 
+    display: block
+    font-family: $firstFont
+    color: $darkColor
+    font-size: rem(20px)
+    font-weight: 700
+    font-style: normal
+    line-height: 1.6
+    text-decoration: none
+    text-transform: none
+
+
+p 
+    display: block
+    font-family: $secondFont
+    color: $darkColor
+    font-size: rem(18px)
+    font-weight: 400
+    font-style: normal
+    line-height: 1.6
+    text-decoration: none
+    text-transform: none
+
+
+blockquote 
+    display: block
+    font-family: $secondFont
+    color: $darkColor
+    font-size: rem(18px)
+    font-weight: 400
+    font-style: normal
+    line-height: 1.6
+    text-decoration: none
+    text-transform: none
+    background-color: rgba(0, 0, 0, 0.2)

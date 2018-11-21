@@ -1,3 +1,12 @@
+// ----------------------------------------------------------------------
+// Starter markup template miliday - "Made with love, especially for you"
+// ----------------------------------------------------------------------
+// nickname: "Michael Holiday"
+// organization: "Totonis.com"
+// date: "21.11.2018"
+// email: "mr.michael.holiday@gmail.com"
+// ----------------------------------------------------------------------
+
 // requires
 const gulp = require('gulp-param')(require('gulp'), process.argv);
 const browserSync = require('browser-sync');
@@ -13,8 +22,40 @@ const mediaGroup = require('gulp-group-css-media-queries');
 const concat = require('gulp-concat');
 const pug = require('gulp-pug');
 const clean = require('gulp-clean');
+const rename = require("gulp-rename");
+const smartgrid = require('smart-grid');
+const watch = require('gulp-watch');
 
-// configs
+
+// smartgrid congig
+const smartgridCongig = {
+    outputStyle: 'sass',
+    columns: 12,
+    offset: '30px',
+    mobileFirst: false,
+    container: {
+        maxWidth: '1170px',
+        fields: '30px'
+    },
+    breakPoints: {
+        lg: {
+            width: '1100px',
+        },
+        md: {
+            width: '960px'
+        },
+        sm: {
+            width: '780px',
+            fields: '15px'
+        },
+        xs: {
+            width: '560px'
+        }
+    }
+};
+
+
+// server congig
 const serverConfig = {
     server: {
         baseDir: "dist"
@@ -31,137 +72,242 @@ const serverConfig = {
     open: "local"
 };
 
-// pathss
-let paths = {
+
+// paths
+let path = {
     src: {},
     dest: {}
 };
 
-// pathss src
-paths.src.root = './src';
-paths.src.assets = paths.src.root + '/assets';
 
-paths.src.pug = {
+// paths src
+path.src.root = './src';
+path.src.assets = {
+    root: {},
+    all: {},
+}
+path.src.assets.root = path.src.root + '/assets';
+path.src.assets.all = path.src.assets.root + '/**/*';
+
+
+path.src.pug = {
     root: '',
     all: '',
     compile: ''
 };
-paths.src.pug.root = paths.src.root + '/views';
-paths.src.pug.all = paths.src.pug.root + '/**/*.pug';
-paths.src.pug.compile = paths.src.pug.root + '/pages/**/*.pug';
+path.src.pug.root = path.src.root + '/views';
+path.src.pug.all = path.src.pug.root + '/**/*.pug';
+path.src.pug.compile = path.src.pug.root + '/pages/**/*.pug';
 
-paths.src.sass = {
+
+path.src.sass = {
     root: '',
     all: '',
     ignore: ''
 };
-paths.src.sass.root = paths.src.assets + '/sass';
-paths.src.sass.all = paths.src.sass.root + '/**/*.sass';
-paths.src.sass.ignore = '!' + paths.src.sass.root + '/**/_*.sass';
+path.src.sass.root = path.src.assets.root + '/sass';
+path.src.sass.all = path.src.sass.root + '/**/*.sass';
+path.src.sass.ignore = '!' + path.src.sass.root + '/**/_*.sass';
 
-paths.src.js = {
+
+path.src.js = {
     concat: '',
     root: '',
     combined: '',
     all: '',
     ignore: ''
 };
-paths.src.js.concat = 'main.js';
-paths.src.js.root = paths.src.assets + '/js';
-paths.src.js.combined = paths.src.js.root + '/**/_*.js';
-paths.src.js.all = paths.src.js.root + '/**/*.js';
-paths.src.js.ignore = '!' + paths.src.js.combined;
+path.src.js.concat = 'main.js';
+path.src.js.root = path.src.assets.root + '/js';
+path.src.js.combined = path.src.js.root + '/**/_*.js';
+path.src.js.all = path.src.js.root + '/**/*.js';
+path.src.js.ignore = '!' + path.src.js.combined;
 
-paths.src.imgs = {
+
+path.src.img = {
     root: '',
     gif: '',
     svg: '',
     png: '',
     jpg: '',
-    jpeg: ''
+    jpeg: '',
+    all: ''
 };
-paths.src.imgs.root = paths.src.assets + '/img';
-paths.src.imgs.gif = paths.src.imgs.root + '/**/*.gif';
-paths.src.imgs.svg = paths.src.imgs.root + '/**/*.svg';
-paths.src.imgs.png = paths.src.imgs.root + '/**/*.png';
-paths.src.imgs.jpg = paths.src.imgs.root + '/**/*.jpg';
-paths.src.imgs.jpeg = paths.src.imgs.root + '/**/*.jpeg';
-
-paths.src.exceptions = [
-    '!' + paths.src.pug.all,
-    '!' + paths.src.sass.all,
-    '!' + paths.src.js.all,
-    '!' + paths.src.imgs.gif,
-    '!' + paths.src.imgs.svg,
-    '!' + paths.src.imgs.jpg,
-    '!' + paths.src.imgs.jpeg
+path.src.img.root = path.src.assets.root + '/img';
+path.src.img.gif = path.src.img.root + '/**/*.gif';
+path.src.img.svg = path.src.img.root + '/**/*.svg';
+path.src.img.png = path.src.img.root + '/**/*.png';
+path.src.img.jpg = path.src.img.root + '/**/*.jpg';
+path.src.img.jpeg = path.src.img.root + '/**/*.jpeg';
+path.src.img.all = [
+    path.src.img.gif,
+    path.src.img.svg,
+    path.src.img.png,
+    path.src.img.jpg,
+    path.src.img.jpeg
 ];
 
-// pathss dest
-paths.dest.root = './dist';
-paths.dest.assets = paths.dest.root + '/assets';
-paths.dest.html = paths.dest.root;
-paths.dest.css = paths.dest.assets + '/css';
-paths.dest.js = paths.dest.assets + '/js';
-paths.dest.img = paths.dest.assets + '/img';
+
+// paths dest
+path.dest.root = './dist';
+path.dest.assets = path.dest.root + '/assets';
+path.dest.html = path.dest.root;
+path.dest.css = path.dest.assets + '/css';
+path.dest.js = path.dest.assets + '/js';
+path.dest.img = path.dest.assets + '/img';
+
+
+// debug
+gulp.task('test', function () {
+    console.log(path);
+    console.log('!' + path.dest.css + '/**/*.css');
+});
+
 
 // tasks global
+gulp.task('default', ['clean'], function () {
+    gulp.start('webserver');
+    gulp.start('moving-assets-dev');
+    gulp.start('pug-dev');
+    gulp.start('sass-dev');
+    gulp.start('js-independent-dev');
+    gulp.start('js-combined-dev');
+    gulp.start('assets-watcher-dev');
+    gulp.start('pug-watcher-dev');
+    gulp.start('sass-watcher-dev');
+    gulp.start('js-combined-watcher-dev');
+    gulp.start('js-independent-watcher-dev');
+});
+
 
 gulp.task('clean', function () {
-    return gulp.src(paths.dest.root)
+    return gulp.src(path.dest.root)
         .pipe(clean())
 })
 
-gulp.task('clean-js', function () {
-    return gulp.src(paths.dest.js)
-        .pipe(clean())
-})
 
 gulp.task('webserver', function () {
     browserSync(serverConfig);
 });
 
-// tasks watch
-gulp.task('default', ['pug-dev', 'sass-dev', 'js-dev'], function() {
-    gulp.start('watcher');
-    gulp.start('webserver');
+
+gulp.task('smart-grid', function () {
+    smartgrid(path.src.sass.root, smartgridCongig);
+    gulp.src(path.src.sass.root + '/smart-grid.' + smartgridCongig.outputStyle)
+        .pipe(rename("_smartGrid." + smartgridCongig.outputStyle))
+        .pipe(gulp.dest(path.src.sass.root));
+    return gulp.src(path.src.sass.root + '/smart-grid.' + smartgridCongig.outputStyle)
+        .pipe(clean())
 });
 
-gulp.task('watcher', function () {
-    gulp.watch(paths.src.sass.all, ['sass-dev']);
-    gulp.watch(paths.src.js.all, ['js-dev']);
-    gulp.watch(paths.src.pug.all, ['pug-dev']);
+
+// tasks watch
+gulp.task('assets-watcher-dev', function () {
+    return watch([path.src.assets.all, '!' + path.src.sass.all, '!' + path.src.js.all], function () {
+        gulp.start('moving-assets-dev');
+    })
+});
+
+
+gulp.task('sass-watcher-dev', function () {
+    return watch(path.src.sass.all, function () {
+        gulp.start('sass-dev');
+    })
+});
+
+
+gulp.task('pug-watcher-dev', function () {
+    return watch(path.src.pug.all, function () {
+        gulp.start('pug-dev');
+    })
+});
+
+
+gulp.task('js-combined-watcher-dev', function () {
+    return watch(path.src.js.combined, function () {
+        gulp.start('js-combined-dev');
+    })
+});
+
+
+gulp.task('js-independent-watcher-dev', function () {
+    return watch([path.src.js.all, path.src.js.ignore], function () {
+        gulp.start('js-independent-dev');
+    })
 });
 
 
 gulp.task('pug-dev', function () {
-    return gulp.src(paths.src.pug.compile)
-        .pipe(pug({pretty:true}))
-        .pipe(gulp.dest(paths.dest.html))
-        .pipe(browserSync.reload({stream:true}));
+    return gulp.src(path.src.pug.compile)
+        .pipe(pug({
+            pretty: true
+        }))
+        .pipe(gulp.dest(path.dest.html))
+        .pipe(browserSync.reload({
+            stream: true
+        }));
 });
+
 
 gulp.task('sass-dev', function () {
-    return gulp.src([paths.src.sass.all, paths.src.sass.ignore])
+    return gulp.src([path.src.sass.all, path.src.sass.ignore])
         .pipe(sourcemaps.init())
-        .pipe(sass().on('error',sass.logError))
-        .pipe(sourcemaps.write('',{sourceMappingURLPrefix:''}))
-        .pipe(gulp.dest(paths.dest.css))
-        .pipe(browserSync.reload({stream:true}));
+        .pipe(sass().on('error', sass.logError))
+        .pipe(sourcemaps.write('', {
+            sourceMappingURLPrefix: ''
+        }))
+        .pipe(gulp.dest(path.dest.css))
+        .pipe(browserSync.reload({
+            stream: true
+        }));
 });
 
-gulp.task('js-dev', function () {
-    return gulp.src(paths.src.js.all)
+
+gulp.task('js-combined-dev', function () {
+    return gulp.src(path.src.js.combined)
         .pipe(sourcemaps.init())
-        .pipe(concat(paths.src.js.concat))
-        .pipe(sourcemaps.write('',{sourceMappingURLPrefix: ''}))
-        .pipe(gulp.dest(paths.dest.js))
+        .pipe(concat(path.src.js.concat))
+        .pipe(sourcemaps.write('', {
+            sourceMappingURLPrefix: ''
+        }))
+        .pipe(gulp.dest(path.dest.js))
+        .pipe(browserSync.reload({
+            stream: true
+        }));
 })
 
-// tasks build
 
+gulp.task('js-independent-dev', function () {
+    return gulp.src([path.src.js.all, path.src.js.ignore])
+        .pipe(gulp.dest(path.dest.js))
+        .pipe(browserSync.reload({
+            stream: true
+        }));
+})
+
+
+gulp.task('clean-assets-dev', function () {
+    return gulp.src([path.dest.assets + '/*', '!' + path.dest.css, '!' + path.dest.js])
+        .pipe(clean({
+            force: true
+        }))
+})
+
+
+gulp.task('moving-assets-dev', ['clean-assets-dev'], function () {
+    return gulp.src([path.src.assets.all, '!' + path.src.sass.all, '!' + path.src.js.all], {
+            nodir: true
+        })
+        .pipe(gulp.dest(path.dest.assets))
+        .pipe(browserSync.reload({
+            stream: true
+        }));
+})
+
+
+// tasks build
 gulp.task('sass-build', function () {
-    return gulp.src([paths.src.sass.all, paths.src.sass.ignore])
-        .pipe(sass().on('error',sass.logError))
-        .pipe(gulp.dest(paths.dest.css));
+    return gulp.src([path.src.sass.ignore, path.src.sass.all])
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest(path.dest.css));
 });
