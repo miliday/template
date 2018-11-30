@@ -249,7 +249,9 @@ gulp.task('clean', function () {
 
 
 gulp.task('clean:assets', function () {
-    return gulp.src([path.dest.assets.root + '/*', '!' + path.dest.css, '!' + path.dest.js], {read: false})
+    return gulp.src([path.dest.assets.root + '/*', '!' + path.dest.css, '!' + path.dest.js], {
+            read: false
+        })
         .pipe(clean());
 });
 
@@ -366,7 +368,6 @@ gulp.task('pug', function () {
     if ((gulpConfig.params.dev && !gulpConfig.params.prod) || (!gulpConfig.params.dev && gulpConfig.params.prod)) {
         return gulp.src(path.src.pug.compile)
             .pipe(pug({
-                pretty: true,
                 plugins: [pugIncludeGlob()]
             }))
             .pipe(gulpif(gulpConfig.minifying.html, htmlmin({
@@ -404,7 +405,7 @@ gulp.task('sass', function () {
 
 
 gulp.task('js:combined', function () {
-    if ((gulpConfig.params.dev && !gulpConfig.params.prod) || (!gulpConfig.params.dev && gulpConfig.params.prod)) {   
+    if ((gulpConfig.params.dev && !gulpConfig.params.prod) || (!gulpConfig.params.dev && gulpConfig.params.prod)) {
         return gulp.src(path.src.js.combined)
             .pipe(gulpif(gulpConfig.sourcemaps.js, sourcemaps.init()))
             .pipe(concat(path.src.js.concat))
@@ -424,7 +425,7 @@ gulp.task('js:combined', function () {
 
 
 gulp.task('js:independent', function () {
-    if ((gulpConfig.params.dev && !gulpConfig.params.prod) || (!gulpConfig.params.dev && gulpConfig.params.prod)) {   
+    if ((gulpConfig.params.dev && !gulpConfig.params.prod) || (!gulpConfig.params.dev && gulpConfig.params.prod)) {
         return gulp.src([path.src.js.all, path.src.js.ignore])
             .pipe(gulpif(gulpConfig.params.prod, babel({
                 presets: ['@babel/env']
@@ -439,7 +440,7 @@ gulp.task('js:independent', function () {
 
 
 gulp.task('js', function (cb) {
-    if (gulpConfig.params.dev || gulpConfig.params.prod) {   
+    if (gulpConfig.params.dev || gulpConfig.params.prod) {
         gulpSequence(['js:combined', 'js:independent'], cb);
     } else {
         console.error('Select build mode: --dev or --prod');
@@ -448,7 +449,7 @@ gulp.task('js', function (cb) {
 
 
 gulp.task('img', function () {
-    if (!gulpConfig.params.dev && gulpConfig.params.prod) {   
+    if (!gulpConfig.params.dev && gulpConfig.params.prod) {
         return gulp.src(path.src.img.all)
             .pipe(imagemin([
                 imagemin.gifsicle({
@@ -478,7 +479,7 @@ gulp.task('img', function () {
 
 
 gulp.task('assets', function () {
-    if (gulpConfig.params.dev && !gulpConfig.params.prod) {   
+    if (gulpConfig.params.dev && !gulpConfig.params.prod) {
         return gulp.src(path.src.assets.all, {
                 nodir: true
             })

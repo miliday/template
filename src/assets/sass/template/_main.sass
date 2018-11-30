@@ -8,31 +8,9 @@
     email: "mr.michael.holiday@gmail.com"
     ----------------------------------------------------------------------
 
-.b-header 
-    position: relative
+.b-main 
+    display: flex
+    flex-direction: column
 
 
-.b-header__desk
-    display: block
-    width: 100%
-    height: 160px
-    +sm(display, none)
-
-
-.b-header__desk_sticky 
-    position: fixed
-    top: 0
-    left: 0
-
-
-.b-header__mob 
-    display: none
-    width: 100%
-    height: 80px
-    +sm(display, flex)
-
-
-.b-header__mob_sticky 
-    position: fixed
-    top: 0
-    left: 0
+.b-main__item

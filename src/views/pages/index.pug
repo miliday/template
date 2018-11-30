@@ -2,14 +2,14 @@ extends ../layout.pug
 
 block head
     title index page
-    link(rel="stylesheet", href="./assets/css/main.css")
+    +style('./assets/css/main.css')
 
 block body
     section.b-page
         header.b-header.b-page__header
-            p header
             .b-header-desk.b-header__desk
                 p header-desk
+
             .b-header-mob.b-header__mob
                 p header-mob
         
@@ -20,4 +20,4 @@ block body
             p footer
 
 block scripts
-    script(src="./assets/js/main.js")
+    +script('./assets/js/main.js')
