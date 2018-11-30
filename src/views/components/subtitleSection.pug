@@ -1,8 +1,0 @@
-//- +subtitleSection({mods: '', class: '',text: ''})
-
-mixin subtitle(config = {})
-
-    if config.tag
-        #{config.tag}(class=['b-subtitle', config.mods, config.class,]) #{config.text}
-    else
-        h2(class=['b-subtitle', config.mods, config.class,]) #{config.text}

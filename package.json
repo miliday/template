@@ -25,17 +25,22 @@
     "gulp-csso": "^3.0.1",
     "gulp-group-css-media-queries": "^1.2.2",
     "gulp-htmlmin": "^5.0.1",
+    "gulp-if": "^2.0.2",
     "gulp-ignore": "^2.0.2",
     "gulp-imagemin": "^5.0.3",
-    "gulp-param": "^1.0.3",
     "gulp-pug": "^4.0.1",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.1",
     "gulp-sass-bulk-import": "^1.0.1",
+    "gulp-sequence": "^1.0.0",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.0",
     "gulp-watch": "^5.0.1",
-    "smart-grid": "^2.1.2"
+    "pug-include-glob": "^0.3.3",
+    "smart-grid": "^2.1.2",
+    "yargs": "^12.0.5"
   },
-  "dependencies": {}
+  "dependencies": {
+    "gulp-pug-inheritance": "^0.2.1"
+  }
 }

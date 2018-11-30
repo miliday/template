@@ -1,71 +1,23 @@
-//- Service
 extends ../layout.pug
 
-block configPage
-    - const headerDesk          = true;
-    - const headerMob           = true;
-    - const contentMain         = true;
-    - const sidebarMainLeft     = false;
-    - const sidebarMainRight    = false;
-    - const footerDesk          = true;
-    - const footerMob           = true;
+block head
+    title index page
+    link(rel="stylesheet", href="./assets/css/main.css")
 
-block configСomponents
-    - var pageConfig              = {};
-    - var headerPageConfig        = {absoluteLg: true, absoluteSm: false};
-    - var headerDeskConfig        = {stiky: false};
-    - var headerMobConfig         = {stiky: true};
-    - var sidebarMainLeftConfig   = {};
-    - var sidebarMainRightConfig  = {};
-    - var contentMainConfig       = {};
-    - var mainPageConfig          = {};
-    - var footerPageConfig        = {};
-    - var footerDeskConfig        = {};
-    - var footerMobConfig         = {};
+block body
+    section.b-page
+        header.b-header.b-page__header
+            p header
+            .b-header-desk.b-header__desk
+                p header-desk
+            .b-header-mob.b-header__mob
+                p header-mob
+        
+        main.b-main.b-page__main
+            p main
+        
+        footer.b-footer
+            p footer
 
-//- Head
-block styleVendor
-block styleOwn
-    +incStyle('./assets/css/main.css')
-
-block styleInline
-    style.
-        body {
-            display: block;
-        }
-
-//- Header
-block headerPage
-block headerDesk
-block headerMob
-
-//- Main
-block mainPage
-
-//- Content
-block contentMain
-    section.b-example.b-content__example
-        .b-example__inner
-            img(class="b-example__img" src="./assets/img/tmp/rocket.png")
-            p.b-example__test test
-
-
-//- Sidebars
-block sidebarMainLeft
-block sidebarMainRight
-
-//- Footer
-block footerPage
-block footerDesk
-block footerMob
-
-//- Scripts
-block scriptVendor
-    +incScript('./assets/lib/jquery-3.3.1.min.js')
-
-block scriptOwn
-    +incScript('./assets/js/main.js')
-
-block scriptInit
-    script.
-        console.log('scriptInitExample')
+block scripts
+    script(src="./assets/js/main.js")

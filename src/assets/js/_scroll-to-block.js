@@ -20,11 +20,11 @@ class ScrollToBlock extends ScrollToBlockParent {
 
 		if (config.offset) {
 			this.offset = config.offset
-		}
+		} 
 		
 		if (config.speed) {
 			this.speed = config.speed
-		}
+		} 
 
 		if (config.place) {
 			this.place = $(config.place)

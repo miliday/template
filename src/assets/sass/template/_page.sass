@@ -18,12 +18,15 @@
     display: flex
     flex-direction: column
     justify-content: space-between
+    position: relative
 
 
 .b-page__header 
     width: 100%
     height: auto
+    min-height: 160px
     z-index: 3
+    +sm(min-height, 80px)
 
 
 .b-page__header_absolute 
@@ -49,9 +52,10 @@
 .b-page__main 
     width: 100%
     height: auto
-    z-index: 2
+    z-index: 1
 
 
 .b-page__footer 
     width: 100%
     height: auto
+    z-index: 2
