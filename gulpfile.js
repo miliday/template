@@ -370,6 +370,7 @@ gulp.task('pug', function () {
     if ((gulpConfig.params.dev && !gulpConfig.params.prod) || (!gulpConfig.params.dev && gulpConfig.params.prod)) {
         return gulp.src(path.src.pug.compile)
             .pipe(pug({
+                pretty: false,
                 plugins: [pugIncludeGlob()]
             }))
             .pipe(gulpif(gulpConfig.minifying.html, htmlmin({
