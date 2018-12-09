@@ -8,23 +8,18 @@
 //- ----------------------------------------------------------------------
 
 
-include ./components/*.pug
-include ./variables.pug
-include ./mixins.pug
+include ../addons/variables.pug
+include ../addons/mixins.pug
+
+include ../components/*.pug
+
+include ./head-first.pug
 
 
 doctype html
 html
-    head
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-        <link rel="icon" href="./assets/img/favicon.ico" type="image/x-icon"/>
+    +headFirst()
         block head
-
 
     body
         block body
-
-
-        block scripts

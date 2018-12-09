@@ -126,10 +126,12 @@ path.src.pug.compile = path.src.pug.root + '/pages/**/*.pug';
 path.src.sass = {
     root: '',
     all: '',
-    ignore: ''
+    ignore: '',
+    smartgrid: ''
 };
 path.src.sass.root = path.src.assets.root + '/sass';
 path.src.sass.all = path.src.sass.root + '/**/*.sass';
+path.src.sass.smartgrid = path.src.sass.root + '/addons';
 path.src.sass.ignore = '!' + path.src.sass.root + '/**/_*.sass';
 
 
@@ -256,26 +258,26 @@ gulp.task('clean:assets', function () {
 });
 
 
-gulp.task('smartgrid:init', function () {
-    smartgrid(path.src.sass.root, smartgridCongig);
+gulp.task('smart-grid:init', function () {
+    smartgrid(path.src.sass.smartgrid, smartgridCongig);
 });
 
 
-gulp.task('smartgrid:rename', function () {
-    return gulp.src(path.src.sass.root + '/smart-grid.' + smartgridCongig.outputStyle)
-        .pipe(rename("_smartGrid." + smartgridCongig.outputStyle))
-        .pipe(gulp.dest(path.src.sass.root));
+gulp.task('smart-grid:rename', function () {
+    return gulp.src(path.src.sass.smartgrid + '/smart-grid.' + smartgridCongig.outputStyle)
+        .pipe(rename("_smart-grid." + smartgridCongig.outputStyle))
+        .pipe(gulp.dest(path.src.sass.smartgrid));
 });
 
 
-gulp.task('clean:smartgrid', function () {
-    return gulp.src(path.src.sass.root + '/smart-grid.' + smartgridCongig.outputStyle)
+gulp.task('clean:smart-grid', function () {
+    return gulp.src(path.src.sass.smartgrid + '/smart-grid.' + smartgridCongig.outputStyle)
         .pipe(clean());
 });
 
 
-gulp.task('smartgrid', function (cb) {
-    gulpSequence(['smartgrid:init', 'smartgrid:rename'], 'clean:smartgrid', cb)
+gulp.task('smart-grid', function (cb) {
+    gulpSequence(['smart-grid:init', 'smart-grid:rename'], 'clean:smart-grid', cb)
 });
 
 
