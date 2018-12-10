@@ -1,0 +1,112 @@
+.b-plan
+    padding: 60px 30px 60px 80px
+    background-color: $darkColor
+    position: relative
+    box-shadow: 0 20px 20px rgba(0,0,0,.2)
+    +sm(padding, 30px 15px 30px 50px)
+
+.b-plan_accent
+    background-color: lighten($darkColor, 2%)
+    box-shadow: 0 20px 40px rgba(0,0,0,.2)
+
+.b-plan__title
+    +absolute-offset-plus(60px, calc(100% - 40px), auto, auto, -50%, 0, rotate(-90deg))
+    white-space: nowrap
+    transform-origin: right top
+    +text($lightColor, rem(34px), 900, 1)
+    +sm-block()
+        +text($lightColor, rem(22px), 900, 1)
+        +absolute-offset-plus(30px, calc(100% - 25px), auto, auto, -50%, 0, rotate(-90deg))
+
+.b-plan__title_accent
+    background: -webkit-linear-gradient(90deg, #b2a56e, #f2e2ad, #b2a56e)
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+
+.b-plan__top
+    margin-bottom: rem(30px)
+    +sm(margin-bottom, rem(20px))
+
+.b-plan__duration
+    display: inline-block
+    margin-right: rem(4px)
+    +text($lightColor, rem(18px), 900, 1)
+    +sm-block()
+        margin-right: rem(2px)
+        +text($lightColor, rem(14px), 900, 1)
+
+.b-plan__save
+    display: inline-block
+    +text($lightColor, rem(18px), 100, 1)
+    +sm-block()
+        +text($lightColor, rem(14px), 100, 1)
+
+.b-plan__price
+    position: relative
+    margin-bottom: rem(30px)
+    +sm(margin-bottom, rem(20px))
+
+.b-plan__price-first
+    display: inline-block
+    +text($lightColor, rem(36px), 900, 1)
+    +sm-block()
+        +text($lightColor, rem(28px), 900, 1)
+
+.b-plan__price-first_accent
+    background: -webkit-linear-gradient(90deg, #b2a56e, #f2e2ad, #b2a56e)
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+
+.b-plan__price-first-sm
+    display: inline-block
+    +text($lightColor, rem(18px), 900, 1)
+    +sm-block()
+        +text($lightColor, rem(14px), 900, 1)
+
+.b-plan__price-first-sm_accent
+    background: -webkit-linear-gradient(90deg, #b2a56e, #f2e2ad, #b2a56e)
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+
+.b-plan__price-second
+    +absolute-offset(50%, auto, auto, 0, -50%, 0)
+    +text($lightColor, rem(60px), 900, 1)
+    opacity: .1
+    +sm-block()
+        +text($lightColor, rem(46px), 900, 1)
+
+.b-plan__price-second-sm
+    display: inline-block
+    +text($lightColor, rem(32px), 900, 1)
+
+.b-plan__discount
+    +text($lightColor, rem(14px), 900, 1)
+    margin-bottom: rem(30px)
+    +sm-block()
+        margin-bottom: rem(15px)
+        +text($lightColor, rem(12px), 900, 1)
+
+.b-plan__discount-old
+    display: inline-block
+    text-decoration: line-through
+    margin-right: rem(4px)
+    +text($lightColor, rem(14px), 100, 1)
+    +sm-block()
+        +text($lightColor, rem(12px), 100, 1)
+
+.b-plan__separator
+    width: 50%
+    height: rem(1px)
+    background-color: $lightColor
+    margin-bottom: rem(30px)
+    +sm(margin-bottom, rem(15px))
+.b-plan__form
+.b-plan__input
+    display: none
+.b-plan__submit
+    +text($lightColor, rem(24px), 900, 1)
+    background: none
+    border: none
+    outline: none
+    +sm-block()
+        +text($lightColor, rem(18px), 900, 1)

@@ -3,8 +3,37 @@
     Starter markup template miliday - "Made with love, especially for you"
     ----------------------------------------------------------------------
     nickname: "Michael Holiday"
-    email: "miliday.developer@gmail.com"
+    email: "mr.michael.holiday@gmail.com"
     ----------------------------------------------------------------------
+
+// Position
+=absolute($top, $right, $bottom, $left)
+    position: absolute
+    top: $top
+    bottom: $bottom
+    left: $left
+    right: $right
+
+=absolute-offset($top, $right, $bottom, $left, $offsetTop, $offsetLeft)
+    position: absolute
+    top: $top
+    bottom: $bottom
+    left: $left
+    right: $right
+    transform: translate($offsetLeft, $offsetTop)
+
+=absolute-offset-plus($top, $right, $bottom, $left, $offsetTop, $offsetLeft, $transform)
+    position: absolute
+    top: $top
+    bottom: $bottom
+    left: $left
+    right: $right
+    transform: $transform translate($offsetLeft, $offsetTop)
+
+
+=translate($top, $left)
+    transform: translate($left, $top)
+
 
 // Typography
 =text($color, $fontSize, $fontWeight, $lineHeight) 
@@ -16,36 +45,42 @@
 
 // Interactive
 =hover($property, $value, $speed, $function) 
-    transition: $property $speed $function
-    &:hover 
-        $property: $value
+    cursor: pointer
+    transition: all $speed $function
+    &:hover
+        #{$property}: $value
 
 
 =hover-block($speed, $function) 
+    cursor: pointer
     transition: all $speed $function
     &:hover 
         @content
 
 
 =focus($property, $value, $speed, $function) 
-    transition: $property $speed $function
+    cursor: pointer
+    transition: all $speed $function
     &:focus 
-        $property: $value
+        #{$property}: $value
 
 
 =focus-block($speed, $function) 
+    cursor: pointer
     transition: all $speed $function
     &:hover 
         @content
 
 
 =active($property, $value, $speed, $function) 
-    transition: $property $speed $function
+    cursor: pointer
+    transition: all $speed $function
     &:active 
-        $property: $value
+        #{$property}: $value
 
     
 =active-block($speed, $function) 
+    cursor: pointer
     transition: all $speed $function
     &:active 
         @content

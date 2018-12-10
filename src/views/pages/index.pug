@@ -4,20 +4,78 @@ block head
     title Miliday template
 
     +style('./assets/css/main.css')
+    +style('https://fonts.googleapis.com/css?family=Crimson+Text:400,400i,600,600i,700,700i')
 
 block body
     section.b-page
         header.b-header.b-page__header
-            .b-header-desk.b-header__desk
-                p header-desk
-
-            .b-header-mob.b-header__mob
-                p header-mob
         
         main.b-main.b-page__main
-            p main
+            section.b-plans.b-main-plans
+                header.b-plans__header
+                    .b-plans__title(data-second-text="Plans")
+                        .b-plans__title-thin Please select
+                        |  your plans
+                
+                .b-plans__main
+                    .b-plans__inner
+                        .b-plans__items
+                            .b-plan.b-plans__item
+                                .b-plan__title Simple
+                                .b-plan__top
+                                    .b-plan__duration 1 - Month Plan / 
+                                    .b-plan__save Save - 0%
+                                .b-plan__price
+                                    .b-plan__price-first $11.95
+                                        .b-plan__price-first-sm /m
+                                    .b-plan__price-second $11.95
+                                        .b-plan__price-second-sm /m
+                                .b-plan__discount $11.95 billet every month
+                                .b-plan__separator
+                                form.b-plan__form
+                                    input.b-plan__input(type="radio" name="1" checked)
+                                    button.b-plan__submit(type="submit") Get 1-Month plan
+
+                            .b-plan.b-plan_accent.b-plans__item.b-plans__item_scale
+                                .b-plan__title.b-plan__title_accent Best offer
+                                .b-plan__top
+                                    .b-plan__duration 1 - Year Plan / 
+                                    .b-plan__save Save - 52%
+                                .b-plan__price
+                                    .b-plan__price-first.b-plan__price-first_accent $5.75
+                                        .b-plan__price-first-sm.b-plan__price-first-sm_accent /m
+                                    .b-plan__price-second $5.75
+                                        .b-plan__price-second-sm /m
+                                .b-plan__discount
+                                    .b-plan__discount-old $143.40
+                                    | $69.00 billet every month
+                                .b-plan__separator
+                                form.b-plan__form
+                                    input.b-plan__input(type="radio" name="12" checked)
+                                    button.b-plan__submit(type="submit") Get 1-Year plan
+
+                            .b-plan.b-plans__item
+                                .b-plan__title Standart
+                                .b-plan__top
+                                    .b-plan__duration 6 - Months Plan / 
+                                    .b-plan__save Save - 41%
+                                .b-plan__price
+                                    .b-plan__price-first
+                                        | $7.00
+                                        .b-plan__price-first-sm /m
+                                    .b-plan__price-second
+                                        | $7.00
+                                        .b-plan__price-second-sm /m
+                                .b-plan__discount
+                                    .b-plan__discount-old $71.70
+                                    | $42.00 billet every 6 months
+                                .b-plan__separator
+                                form.b-plan__form
+                                    input.b-plan__input(type="radio" name="6" checked)
+                                    button.b-plan__submit(type="submit") Get 6-Months plan
+
+                                
         
         footer.b-footer
-            p footer
 
     +script('./assets/js/main.js')
