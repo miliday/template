@@ -239,14 +239,10 @@ gulp.task('helping', function () {
 
 // tasks global
 gulp.task('clean', function () {
-    if (gulpConfig.params.dev && !gulpConfig.params.prod) {
-        return gulp.src(path.dest.root, {
-                read: false
-            })
-            .pipe(clean());
-    } else {
-        console.error('Select build mode: --dev');
-    }
+    return gulp.src(path.dest.root, {
+            read: false
+        })
+        .pipe(clean());
 });
 
 
@@ -482,7 +478,7 @@ gulp.task('img', function () {
 
 
 gulp.task('assets', function () {
-    if (gulpConfig.params.dev && !gulpConfig.params.prod) {
+    if ((gulpConfig.params.dev && !gulpConfig.params.prod) || (!gulpConfig.params.dev && gulpConfig.params.prod)) {
         return gulp.src(path.src.assets.all, {
                 nodir: true
             })
