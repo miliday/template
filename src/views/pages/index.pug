@@ -1,11 +1,12 @@
-extends ../layouts/page-first.pug
+extends ../layouts/layout.pug
 
 block head
     title Miliday template
 
+block style
     +style('./assets/css/main.css')
 
-block body
+block main
     section.b-page
         header.b-header.b-page__header
             .b-header-desk.b-header__desk
@@ -20,4 +21,5 @@ block body
         footer.b-footer
             p footer
 
+block script
     +script('./assets/js/main.js')

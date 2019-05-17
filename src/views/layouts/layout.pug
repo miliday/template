@@ -11,13 +11,15 @@ include ../addons/mixins.pug
 
 include ../components/*.pug
 
-include ./head-first.pug
+include ./head.pug
 
 
 doctype html
 html
-    +headFirst()
+    +head()
         block head
+        block style
 
     body
-        block body
+        block main
+        block script
