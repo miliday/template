@@ -1,0 +1,63 @@
+extends ../layouts/layout.pug
+
+block head
+    title Miliday template
+
+block style
+    +style('./assets/css/main.css')
+
+block main
+    section.b-page
+        header.b-header.b-page__header
+            | header
+        
+        main.b-main.b-page__main
+            .b-main__sections
+                .b-constructor.b-main__section
+                    h1 Heading example
+                    h2 Heading example
+                    h3 Heading example
+                    h4 Heading example
+                    h5 Heading example
+                    h6 Heading example
+
+                    p 
+                        | Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                        | Vel odio maxime, sunt adipisci asperiores, doloribus blanditiis velit provident dolorum voluptas et? 
+                        a(href="#") paragraph link
+                        |  Veritatis ea beatae architecto aperiam non pariatur unde explicabo, officia reprehenderit hic veniam inventore neque distinctio excepturi quis, perspiciatis quia optio eaque natus voluptatum in quos exercitationem dolorem? 
+                        | Consectetur pariatur laborum esse harum optio quisquam dolores? 
+                        | Magni quaerat saepe debitis reprehenderit inventore nulla, odio animi mollitia repellendus dignissimos, labore dolorem accusamus nihil fugiat doloribus. 
+                        | Itaque obcaecati necessitatibus sequi id possimus unde nostrum! Iure, nihil iusto suscipit ullam expedita modi aliquam corporis provident, animi debitis voluptatem qui accusantium perspiciatis soluta! 
+                    
+                    p Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem incidunt porro dolorum reprehenderit maxime iusto quo natus blanditiis nihil voluptates.
+
+                    ul
+                        li List item
+                        li List item
+                        li List item
+                        li List item
+                        li 
+                            a(hreh="") List link
+
+                    table(style='width: 100%;')
+                        tr
+                            th Firstname
+                            th Lastname
+                            th Age
+                        tr
+                            td Jill
+                            td Smith
+                            td 50
+                        tr
+                            td Eve
+                            td Jackson
+                            td 94
+
+
+
+        footer.b-footer
+            | footer
+
+block script
+    +script('./assets/js/main.js')

@@ -7,49 +7,85 @@
     ----------------------------------------------------------------------
 
 // Position
-=fixed($top, $right, $bottom, $left)
+=ofs($y: 0, $x: 0)
+    transform: translate($x, $y)
+
+
+=fix($t: auto, $r: auto, $b: auto, $l: auto)
     position: fixed
-    top: $top
-    bottom: $bottom
-    left: $left
-    right: $right
+    top: $t
+    bottom: $b
+    left: $l
+    right: $r
+
+=fix-tl($t: 0, $r: 0, $b: 0, $l: 0)
+    +fix($top, auto, auto, $l)
+
+=fix-tr($t: 0, $r: 0)
+    +fix($t, $r, auto, auto)
+
+=fix-bl($b: 0, $l: 0)
+    +fix(auto, auto, $b, $l)
+
+=fix-br($b: 0, $r: 0)
+    +fix(auto, $r, $b, auto)
 
     
-=absolute($top, $right, $bottom, $left)
+=abs($t: auto, $r: auto, $b: auto, $l: auto)
     position: absolute
-    top: $top
-    bottom: $bottom
-    left: $left
-    right: $right
+    top: $t
+    bottom: $b
+    right: $r
+    left: $l
+
+=abs-ofs($t: auto, $r: auto, $b: auto, $l: auto, $x: 0, $y: 0)
+    +abs($t, $r, $b, $l)
+    +ofs($x, $y)
 
 
-=absolute-offset($top, $right, $bottom, $left, $offsetTop, $offsetLeft)
-    position: absolute
-    top: $top
-    bottom: $bottom
-    left: $left
-    right: $right
-    transform: translate($offsetLeft, $offsetTop)
+=abs-tl($t: 0, $r: 0, $b: 0, $l: 0)
+    +abs($t, auto, auto, $l)
+
+=abs-tl-ofs($t: 0, $l: 0, $x: 0, $y: 0)
+    +abs-tl($t, $l)
+    +ofs($x, $y)
 
 
-=absolute-offset-plus($top, $right, $bottom, $left, $offsetTop, $offsetLeft, $transform)
-    position: absolute
-    top: $top
-    bottom: $bottom
-    left: $left
-    right: $right
-    transform: $transform translate($offsetLeft, $offsetTop)
+=abs-tr($t: 0, $r: 0)
+    +abs($t, $r, auto, auto)
+
+=abs-tr-ofs($t: 0, $r: 0, $x: 0, $y: 0)
+    +abs-tr($t, $r)
+    +ofs($x, $y)
 
 
-=translate($top, $left)
-    transform: translate($left, $top)
+=abs-bl($b: 0, $l: 0)
+    +abs(auto, auto, $b, $l)
+
+=abs-bl-ofs($b: 0, $l: 0, $x: 0, $y: 0)
+    +abs-bl($b, $l)
+    +ofs($x, $y)
 
 
-=gradient-text($direction, $gradiendColorStart, $gradiendColorEnd)
-    background: linear-gradient($direction, $gradiendColorStart, $gradiendColorEnd)
-    -webkit-background-clip: text
-    -webkit-text-fill-color: transparent
+=abs-br($b: 0, $r: 0)
+    +abs(auto, $r, $b, auto)
 
+=abs-br-ofs($b: 0, $r: 0, $x: 0, $y: 0)
+    +ofs($x, $y)
+    +abs-br($b, $r)
+
+
+// Pseudo
+=aft($content: '')
+    &:after
+        content: $content
+        @content
+
+
+=bfr($content: '')
+    &:before
+        content: $content
+        @content
 
 // Typography
 =text($color, $fontSize, $fontWeight, $lineHeight) 
@@ -58,33 +94,24 @@
     font-weight: $fontWeight
     line-height: $lineHeight
 
+=gr-text($direction, $gradiendColorStart, $gradiendColorEnd)
+    background: linear-gradient($direction, $gradiendColorStart, $gradiendColorEnd)
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+
 
 // Interactive
-=hover($property, $value, $speed, $function) 
+=hover($speed: $speed, $easing: $easing) 
+    transition: all $speed $easing
     cursor: pointer
-    transition: all $speed $function
     &:hover
-        #{$property}: $value
-
-
-=hover-block($speed, $function) 
-    cursor: pointer
-    transition: all $speed $function
-    &:hover 
         @content
 
 
-=focus($property, $value, $speed, $function) 
+=focus($speed: $speed, $easing: $easing) 
     cursor: pointer
-    transition: all $speed $function
+    transition: all $speed $easing
     &:focus 
-        #{$property}: $value
-
-
-=focus-block($speed, $function) 
-    cursor: pointer
-    transition: all $speed $function
-    &:hover 
         @content
 
 
