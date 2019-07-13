@@ -19,41 +19,18 @@
     position: relative
 
 
-.b-page__header 
+.b-page__header
+    +fix-tl()
     width: 100%
     height: auto
-    min-height: 160px
-    z-index: 3
-    +sm(min-height, 80px)
-
-
-.b-page__header_absolute 
-    position: absolute
-    top: 0
-    left: 0
-
-
-.b-page__header_absolute-lg 
-    +from($break_sm) 
-    position: absolute
-    top: 0
-    left: 0
-    
-
-.b-page__header_absolute-sm 
-    +to($break_sm) 
-    position: absolute
-    top: 0
-    left: 0
+    z-index: 100
 
 
 .b-page__main 
     width: 100%
     height: auto
-    z-index: 1
 
 
 .b-page__footer 
     width: 100%
     height: auto
-    z-index: 2

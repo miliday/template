@@ -71,8 +71,8 @@
     +abs(auto, $r, $b, auto)
 
 =abs-br-ofs($b: 0, $r: 0, $x: 0, $y: 0)
-    +ofs($x, $y)
     +abs-br($b, $r)
+    +ofs($x, $y)
 
 
 // Pseudo
@@ -88,42 +88,54 @@
         @content
 
 // Typography
-=text($color, $fontSize, $fontWeight, $lineHeight) 
-    color:  $color
-    font-size: $fontSize 
-    font-weight: $fontWeight
-    line-height: $lineHeight
+=txt($c, $fs, $fw, $lh) 
+    color:  $c
+    font-size: $fs 
+    font-weight: $fw
+    line-height: $lh
 
-=gr-text($direction, $gradiendColorStart, $gradiendColorEnd)
-    background: linear-gradient($direction, $gradiendColorStart, $gradiendColorEnd)
+
+// Gradients
+=grd-bg($dir: 0deg, $gs: #{$gradient-start}, $ge: #{$gradient-end})
+    background: linear-gradient($dir, $gs, $ge)
+
+=grd-txt($dir: 0deg, $gs: #{$gradient-start}, $ge: #{$gradient-end})
+    +grd-bg($dir, $gs, $ge)
     -webkit-background-clip: text
     -webkit-text-fill-color: transparent
 
 
 // Interactive
-=hover($speed: $speed, $easing: $easing) 
+=hvr($speed: #{$speed}, $easing: #{$easing}) 
     transition: all $speed $easing
     cursor: pointer
     &:hover
         @content
 
 
-=focus($speed: $speed, $easing: $easing) 
+=fcs($speed: #{$speed}, $easing: #{$easing}) 
     cursor: pointer
     transition: all $speed $easing
     &:focus 
         @content
-
-
-=active($property, $value, $speed, $function) 
+        
+=act($speed: #{$speed}, $easing: #{$easing}) 
     cursor: pointer
-    transition: all $speed $function
+    transition: all $speed $easing
     &:active 
-        #{$property}: $value
+        @content
 
-    
-=active-block($speed, $function) 
-    cursor: pointer
-    transition: all $speed $function
-    &:active 
+
+// Others
+=ie-target()
+    @media screen and (min-width:0\0)
+        @content
+
+    @supports (-ms-ime-align:auto)
+        @content
+
+    @supports (-ms-accelerator:true)
+        @content
+
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active)
         @content
